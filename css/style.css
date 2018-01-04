@@ -1,0 +1,281 @@
+#rectangle {
+	border-color:black;
+	border-style:solid;
+	margin:auto;
+	padding:auto;
+}
+
+
+#SquareBox{
+	border:5px solid green ;
+	height:400px;
+	width:300px;	
+}
+
+#Straightline{
+	border:10px solid green;
+}
+
+#InnerSquareHeading {
+	width:200px;
+	height:40px;
+	margin:0px 45px 25px 45px ;
+	font-weight:bold;
+	background-color:green;
+	border-style:normal;
+	text-align:center;
+	font-size:20px;
+}
+
+
+.PlayMovie{
+	width:200px;
+	height:50px;
+	margin:30px 45px 0px 45px ;
+	font-weight:bold;
+	border-style:normal;
+	text-align:center;
+	color:green;
+	font-size:20px;
+	font-family:arial;
+	border:solid green;
+	
+
+
+}
+
+#InnerSquare{
+	position:relative;
+	border:5px solid green;	
+        height:200px;
+	width:200px;
+	margin:0px 60px 0px 45px;
+	border-style:groove;
+	
+}
+
+#heading {
+	position:500%;
+	font-size:500%;
+	border-color:white;
+	border-style:solid;
+	text-align:center;
+	background-color:red;	
+}
+
+#terms{
+	text-align:center;
+	font-weight:normal;
+}
+
+#welcome{
+	margin:auto;
+	position:relative;
+	text-align:center;
+	border-style:solid;
+	border-color:black;
+	color:black;
+	font-weight:bold;
+	font-size:100%;
+}
+
+#check {
+	position:relative;
+	margin:2% 25% 0% 25%;
+	text-align:center;
+}
+
+#SeriesInfo{
+	border-style:solid;
+	margin:auto;
+	padding:0% 0%;
+	text-align:center;
+}
+
+#InnerBox{
+	border-style:groove;
+	margin:auto;
+	text-align:center;
+	padding:1%;
+	font-weight:bold;
+	font-size:100%;
+	
+}
+
+#Centering{
+	position:relative;
+	border-style:normal;
+	margin:0% 45% 0% 45%;
+	padding:auto;
+	text-align:justify;
+	vertical-align:justify;		
+}
+
+
+#ValueBox{
+	margin:0% 0% 0% 0%;
+	text-align:center;
+	padding:1% 1% 2% 0%;
+}
+
+#SideHeadings {
+	font-size:200%;
+	border-color:white;
+	border-style:solid;
+	text-align:center;
+	background-color:#FF3333;
+	
+}
+
+#normal{
+	font-weight:normal;
+}
+
+.newseriesbut{
+	position:relative;
+	font-size:300%;
+	text-align:center;
+	width:50%;
+	height:25%;
+	margin:2% 25% 0% 25%;
+	font-weight:bold;
+}
+
+.viewseriesbut{
+	font-size:300%;
+	text-align:center;
+	width:50%;
+	height:25%;
+	margin: 3% 25% 0% 25%;
+	font-weight:bold;
+}
+
+.back_main {
+	margin:auto;
+	width:150px;
+	height:50px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.NextBut {
+	margin:auto;
+	width:150px;
+	height:50px;
+	text-align:center;
+	font-weight:bold;
+
+}
+
+.AddPlayers {
+	margin:auto;
+	width:15%;
+	padding:1%;
+	text-align:center;
+	font-size:100%;
+}
+
+.TextCenter {
+	margin:auto;
+	width:25%;
+	padding:1%;
+	text-align:center;
+	font-size:100%;
+
+}
+
+#Boxed{
+	margin:auto;
+	border-style:normal;
+	width:100%;
+	padding:0%;
+	text-align:center;
+}
+
+#ButtonBox{
+	border-style:normal;
+	padding:1%;
+}
+
+
+#PlayersList {
+	display:inline-block;
+	text-align:center;
+	padding:1%;
+	border-style:normal;
+	position:relative;
+
+	
+}
+
+#hidebox {
+	display:none;
+}
+
+#Player{
+	margin:auto;
+	text-align:center;
+	padding:auto;
+}
+
+#PlayerInfo{
+	margin:auto;
+	text-align:center;
+	padding:2%;
+	position:fixed;
+	width:75%;
+	height:auto;
+	top:10%;
+	left:10%;
+	z-index:1;
+	background-color:whitesmoke;
+	opacity:.95;
+}
+
+#EnclosingPlayerInfo {
+	display:inline-block;
+	position:relative;
+	width:100%;
+	height:100%;
+	border-style:normal;
+	margin:auto;
+	padding:0%;
+	
+}
+
+#PlayerFeature {
+	display:inline-block;
+	width:auto;
+	height:auto;
+	border-style:normal;
+	padding:1%;
+}
+
+
+#PlayerRole {
+	display:inline-block;
+	width:auto;
+	height:auto;
+	border-style:normal;
+	padding:1%;
+}
+
+#RightCornering{
+	display:inline-block;
+	margin:auto;
+	border-style:normal;
+	font-size:50px;
+	width:100%;
+	background-color:lightgreen;
+	text-align:center;
+}
+
+#PlayerBox{
+	display:inline-block;
+	position:relative;
+	border-style:normal;
+}
+
+#show_players{
+	background-color:white;
+}
