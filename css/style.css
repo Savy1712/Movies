@@ -9,7 +9,8 @@
 #SquareBox{
 	border:5px solid green ;
 	height:400px;
-	width:300px;	
+	width:300px;
+	margin:2px;	
 }
 
 #Straightline{
@@ -18,30 +19,29 @@
 
 #InnerSquareHeading {
 	width:200px;
-	height:40px;
-	margin:0px 45px 25px 45px ;
+	height:60px;
+	margin:0px 45px 5px 45px ;
 	font-weight:bold;
 	background-color:green;
 	border-style:normal;
-	text-align:center;
-	font-size:20px;
+	text-align:center-justify;
+	color:white;
+	font-size:18px;
+	
 }
 
 
 .PlayMovie{
 	width:200px;
 	height:50px;
-	margin:30px 45px 0px 45px ;
+	margin:20px 45px 0px 45px ;
 	font-weight:bold;
 	border-style:normal;
 	text-align:center;
 	color:green;
 	font-size:20px;
-	font-family:arial;
+	font-family:Arial;
 	border:solid green;
-	
-
-
 }
 
 #InnerSquare{
@@ -49,7 +49,7 @@
 	border:5px solid green;	
         height:200px;
 	width:200px;
-	margin:0px 60px 0px 45px;
+	margin:0px 70px 0px 45px;
 	border-style:groove;
 	
 }
@@ -96,9 +96,10 @@
 	border-style:groove;
 	margin:auto;
 	text-align:center;
-	padding:1%;
+	padding:2%;
 	font-weight:bold;
 	font-size:100%;
+	overflow:auto;
 	
 }
 

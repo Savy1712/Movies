@@ -1,8 +1,8 @@
-function MoviePlay(path) {
+
+function MoviePlay(path, name) {
   var xmlhttp = new XMLHttpRequest();
   var param = "movie_path="+path;
   xmlhttp.open("POST", "/Movies/php/PlayVideo.php", true);
-  /* Must for sending POST request to other page */
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -11,3 +11,5 @@ function MoviePlay(path) {
   };
   xmlhttp.send(param);  
 }
+
+
