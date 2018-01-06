@@ -44,6 +44,21 @@
 	border:solid green;
 }
 
+
+.TagMovie{
+	width:200px;
+	height:50px;
+	margin:20px 45px 0px 45px ;
+	font-weight:bold;
+	border-style:normal;
+	text-align:center;
+	color:green;
+	font-size:20px;
+	border:solid green;
+}
+
+
+
 #InnerSquare{
 	position:relative;
 	border:5px solid green;	
@@ -118,12 +133,21 @@
 	padding:1% 1% 2% 0%;
 }
 
+
+#TagBox{
+	margin:auto;
+	text-align:center;
+	padding:auto;
+}
+
+
 #SideHeadings {
-	font-size:200%;
+	font-size:50px;
 	border-color:white;
 	border-style:solid;
 	text-align:center;
-	background-color:#FF3333;
+	color:white;
+	background-color:green;
 	
 }
 
@@ -185,9 +209,8 @@
 }
 
 #Boxed{
-	margin:auto;
 	border-style:normal;
-	width:100%;
+	width:50%;
 	padding:0%;
 	text-align:center;
 }
@@ -218,6 +241,14 @@
 	padding:auto;
 }
 
+#Para{
+	margin:auto;
+	text-align:center;
+	padding:2%;
+
+
+}
+
 #Tagging{
 	margin:auto;
 	text-align:center;
@@ -230,6 +261,7 @@
 	z-index:1;
 	background-color:whitesmoke;
 	opacity:.95;
+	overflow:scroll;
 }
 
 #EnclosingPlayerInfo {
@@ -238,7 +270,7 @@
 	width:100%;
 	height:100%;
 	border-style:normal;
-	margin:auto;
+	magin:auto;
 	padding:0%;
 	
 }

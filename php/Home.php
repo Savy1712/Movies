@@ -114,10 +114,29 @@ foreach($movie_list as $movie):
   $movie_path = str_replace($HOME_FOLDER,"",$movie_full_name)."#?".str_replace(" ", "&",$file_name);
   $image_file_name = $image_path."/Image.png";
   if(!file_exists($HOME_FOLDER.$image_file_name)) {
-    $image_file_name = str_replace("/Videos","",$FILE_LOCATION).'/Default/Image.jpg'; 
-    echo $image_file_name;
+    $image_file_name = str_replace("/Videos","",$FILE_LOCATION).'/Default/Image.jpg';
   }
   
+  #Tag and Play togging options check 
+  $play_movie = False;
+  $tag_movie = True;
+  #Checking for the Info.txt entries to toggle between Tag Movies and Play Movies. 
+  if(count($dir_list) == 4) {
+    $i = 0;
+    $info_text = array('Name', 'Year','Language','Genre');
+    $check_true = 0;
+    for(; $i < count($dir_list); $i++) {
+      $check_info_text = explode('=', $dir_list[$i]);
+      if($check_info_text[0] == $info_text[$i]) {
+        $check_true = $check_true + 1; 
+      } 
+    }
+    if($check_true == count($info_text)) {
+      $play_movie = True;
+      $tag_movie = False;  
+    }  
+  } 
+
   echo "<td>";
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'></div>";
@@ -125,7 +144,13 @@ foreach($movie_list as $movie):
   echo "$file_name</div>";
   echo "<div id='InnerSquare'>";
   echo "<img src='$image_file_name' width='200' height='200'></img></div>";
-  echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
+  if($play_movie == True and $tag_movie == False) {
+    echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
+  } else if($play_movie == False and $tag_movie == True) {
+      echo "<div id='Tagging' style='display:none'></div>";
+      echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='PlayMovie' onclick=TagMovie('$movie_path') />";
+  }
+  
   echo "</div>";
   echo "</td>";
 endforeach;
