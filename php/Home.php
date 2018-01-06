@@ -137,6 +137,9 @@ foreach($movie_list as $movie):
     }  
   } 
 
+  # TODO: Merge the Name, Language=<Default> and Genre=<Default>(if not present) with the $movie_path and send to TagMovie
+  # If everything is present, play movie will be present.
+
   echo "<td>";
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'></div>";

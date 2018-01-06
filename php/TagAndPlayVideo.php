@@ -15,19 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_name = htmlspecialchars($_POST["movie_name"]);
   $movie_path = htmlspecialchars($_POST["movie_path"]);
   //echo $movie_name;
+  # Add POST statements regarding the language and Genre 
 }
 ?>	 
 
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
-<div id = "SideHeadings"><?php echo $movie_name ?> </div>
+<div id = "SideHeadings"><?php echo "$movie_name"; ?> </div>
 
 <body>
 <div id = "InnerBox">
 <div id = "TagBox"> GENRE:</div>
 <select id="Genre" name="Genre" class="TagMovie" onchange="SayThanks()">
-  <option value = "dontknow">DONT KNOW</option>
+  <!-- Add a invisible statement until we get some information about Language and Genre in POST -->
   <option value = "Comedy">COMEDY</option>
   <option value = "Horror">HORROR</option>
   <option value = "Comical_horror">COMEDY & HORROR</option>
@@ -35,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <option value = "Sci-fi">SCI-FI</option>
   <option value = "Drama">DRAMA</option>
   <option value = "Psycho">PSYCHOPATH</option>
+  <option value = "dontknow"> <!-- Add "selected" to make this option as default --> DONT KNOW</option>
 </select>
 </div>
 

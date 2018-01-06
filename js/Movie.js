@@ -16,9 +16,15 @@ function MoviePlay(path, name="") {
 
 
 function TagMovie(path, name="") {
+  
+  // TODO: Get the language and genre from the "HOME.php" file 
   var xmlhttp = new XMLHttpRequest();
   var movie_path = path.split("#?")[0];
-  var movie_name = (path.split("#?")[1]).replace("&", " ");
+  var movie_name_with_amb = (path.split("#?")[1]);
+  // Replace all the occurences -> /g/ 
+  var movie_name = movie_name_with_amb.replace(/&/g, " ");
+  // TODO: Get the Language and Genre if filled.
+  // TODO: Make Language to be 2 and Genre to be 3 based on Length of "path.split"
   var param = "movie_path="+movie_path+"&movie_name="+movie_name;
   xmlhttp.open("POST", "/Movies/php/TagAndPlayVideo.php", true);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -41,5 +47,8 @@ function SayThanks() {
   } else {
       document.getElementById("hidebox").style.display = "none";
   }
+}
 
+function PlayAfterTag() {
+  
 }
