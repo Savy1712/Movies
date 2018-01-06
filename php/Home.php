@@ -30,7 +30,7 @@ if(!file_exists($HOME_FOLDER.$FILE_LOCATION)) {
 #Check for folders inside "Videos/"
 if(is_dir($HOME_FOLDER.$FILE_LOCATION)) {
   if($dir_open = opendir($HOME_FOLDER. $FILE_LOCATION)) {
-    while (($folder_open = readdir($dir_open)) != false ) {
+    while (($folder_open = readdir($dir_open)) !==  false ) {
       if(!($folder_open == '.' or $folder_open == "..")) {
         $folder_list[] = $folder_open; 
        }    
@@ -62,9 +62,10 @@ foreach ($folder_list as $folder_name):
   if(is_dir($entire_path)) {
     if($dir_open = opendir($entire_path)) {
       while (($folder_open = readdir($dir_open)) != false ) {
-        if(!($folder_open == '.' or $folder_open == "..")) {
-          $movie_list[] = $entire_path.'/'. $folder_open;
-         }    
+        if((!strcmp($folder_open,".")  or !strcmp($folder_open,"..")) ) {
+        } else {
+          $movie_list[] = $entire_path.'/'.$folder_open;
+        }    
       }   
       closedir($dir_open);
     } else {
@@ -88,7 +89,7 @@ if($DEBUG) {
 # Running through "Videos/<folder_name>"
 ?>  
 <div id='InnerBox'>  
-<table id='MovieList' >
+<table id='MovieList'>
 <tr>
 
 <?php 
@@ -100,28 +101,31 @@ foreach($movie_list as $movie):
       $movie_full_name = $movie_array[0];
     }  
   endforeach;
-  $movie_path= $movie_full_name;
-  $dir = file_get_contents($file_path. "/Info.txt");
-  $dir_list = explode(';', $dir);
-
+ 
+  $dir = file_get_contents($file_path."/Info.txt");
+  $dir_list = explode(";", $dir);
+  
   # Getting the Movie name 
-  $file_name = explode('=', $dir_list[0])[1];
-  $image_path_list = explode('/', $file_path);
+  $file_name = explode("=", $dir_list[0])[1];
   $image_path = "";
 
   # Getting the Image path
   $image_path = str_replace($HOME_FOLDER,"",$file_path);
-  $movie_name = str_replace($HOME_FOLDER, "", $movie_full_name);
+  $movie_path = str_replace($HOME_FOLDER,"",$movie_full_name)."#?".str_replace(" ", "&",$file_name);
   $image_file_name = $image_path."/Image.png";
+  if(!file_exists($HOME_FOLDER.$image_file_name)) {
+    $image_file_name = str_replace("/Videos","",$FILE_LOCATION).'/Default/Image.jpg'; 
+    echo $image_file_name;
+  }
   
   echo "<td>";
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'></div>";
-  echo "<div id ='InnerSquareHeading' wrap='soft' >";
-  echo $file_name. "</div>";
+  echo "<div id ='InnerSquareHeading' wrap='soft'>";
+  echo "$file_name</div>";
   echo "<div id='InnerSquare'>";
   echo "<img src='$image_file_name' width='200' height='200'></img></div>";
-  echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_name','$file_name') />";
+  echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
   echo "</div>";
   echo "</td>";
 endforeach;

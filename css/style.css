@@ -50,8 +50,7 @@
         height:200px;
 	width:200px;
 	margin:0px 70px 0px 45px;
-	border-style:groove;
-	
+	border-style:groove;	
 }
 
 #heading {
@@ -219,7 +218,7 @@
 	padding:auto;
 }
 
-#PlayerInfo{
+#Tagging{
 	margin:auto;
 	text-align:center;
 	padding:2%;
