@@ -151,7 +151,7 @@ foreach($movie_list as $movie):
     echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
   } else if($play_movie == False and $tag_movie == True) {
       echo "<div id='Tagging' style='display:none'></div>";
-      echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='PlayMovie' onclick=TagMovie('$movie_path') />";
+      echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='TagMovie' onclick=TagMovie('$movie_path') />";
   }
   
   echo "</div>";

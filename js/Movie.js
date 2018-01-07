@@ -42,11 +42,17 @@ function Close() {
 }
 
 function SayThanks() {
-  if(( (document.getElementById("Genre").value == "dontknow") && !(document.getElementById("Language").value == "dontknow") ) || (!(document.getElementById("Genre").value == "dontknow") && (document.getElementById("Language").value == "dontknow"))) {
+  if( ((document.getElementById("Genre").value == "dontknow") && !(document.getElementById("Language").value == "dontknow")) || 
+    (!(document.getElementById("Genre").value == "dontknow") && (document.getElementById("Language").value == "dontknow")) || 
+    (!(document.getElementById("Genre").value == "dontknow") && !(document.getElementById("Language").value == "dontknow")) ) {
     document.getElementById("hidebox").style.display = "block";
   } else {
       document.getElementById("hidebox").style.display = "none";
   }
+}
+
+function highlight(name) {
+  document.getElementById("Romance").style.backgroundColor="red";
 }
 
 function PlayAfterTag() {

@@ -25,32 +25,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div id = "SideHeadings"><?php echo "$movie_name"; ?> </div>
 
 <body>
-<div id = "InnerBox">
-<div id = "TagBox"> GENRE:</div>
-<select id="Genre" name="Genre" class="TagMovie" onchange="SayThanks()">
-  <!-- Add a invisible statement until we get some information about Language and Genre in POST -->
-  <option value = "Comedy">COMEDY</option>
-  <option value = "Horror">HORROR</option>
-  <option value = "Comical_horror">COMEDY & HORROR</option>
-  <option value = "Thriller">THRILLER</option>
-  <option value = "Sci-fi">SCI-FI</option>
-  <option value = "Drama">DRAMA</option>
-  <option value = "Psycho">PSYCHOPATH</option>
-  <option value = "dontknow"> <!-- Add "selected" to make this option as default --> DONT KNOW</option>
-</select>
+
+
+<div id = "InnerBox" >
+<div id = "TagBox"> CHOOSE GENRE:</div>
+<table>
+<tr>
+<td><input type="button" name="Horror" style="background-image:url('<?php echo $GENRE_IMAGES.'horror.png'; ?>')" class="GenrePics" onclick="Close()" autofocus /></td>
+<td><input type="button" name="Romance" style="background-image:url('<?php echo $GENRE_IMAGES.'Romance.jpeg'; ?>')" class="GenrePics" onfocus="highlight('Romance');" id="Romance" /></td>
+<td><input type="button" name="Action" style="background-image:url('<?php echo $GENRE_IMAGES.'Action.jpeg'; ?>')" class="GenrePics" /></td>
+<td><input type="button" name="Fantasy" style="background-image:url('<?php echo $GENRE_IMAGES.'fantasy.jpg'; ?>')" class="GenrePics"/></td>
+<td><input type="button" name="Musical" style="background-image:url('<?php echo $GENRE_IMAGES.'Musical.jpeg'; ?>')" class="GenrePics"/></td>
+<td><input type="button" name="Mystery" style="background-image:url('<?php echo $GENRE_IMAGES.'Mystery.jpeg'; ?>')" class="GenrePics"/></td>
+<td><input type="button" name="Scifi" style="background-image:url('<?php echo $GENRE_IMAGES.'Scifi.jpeg'; ?>')" class="GenrePics"/></td>
+<td><input type="button" name="Thriller" style="background-image:url('<?php echo $GENRE_IMAGES.'Thriller.png'; ?>')" class="GenrePics"/></td>
+<td><input type="button" name="Western" style="background-image:url('<?php echo $GENRE_IMAGES.'Western.jpeg'; ?>')" class="GenrePics"/></td>
+</tr>
+</table>
 </div>
 
+
 <div id = "InnerBox">
-<div id = "TagBox">
-LANGUAGE:</div>
-<select id="Language" name="Language" class="TagMovie" onchange="SayThanks()">
-  <option value = "dontknow"> DONT KNOW </option>
-  <option value = "Tamil">TAMIL</option>
-  <option value = "English">ENGLISH</option>
-  <option value = "Hindi">HINDI</option>
-  <option value = "Malayalam">MALAYALAM</option>
-  <option value = "Telugu">TELUGU</option>
-</select>
+<div id = "TagBox">CHOOSE LANGUAGE:</div>
+<div id ="Centering">
+<table>
+<tr>
+<td><input type="button" name="" value="ENGLISH" class="Language"></td>
+<td><input type="button" name="" value="TAMIL" class="Language"></td>
+<td><input type="button" name="" value="TELUGU" class="Language"></td>
+<td><input type="button" name="" value="MALAYALAM" class="Language"></td>
+<td><input type="button" name="" value="HINDI" class="Language"></td>
+
+</tr>
+</table>
+</div>
 </div>
 
 <div id = "hidebox">
@@ -59,18 +67,17 @@ LANGUAGE:</div>
 <?php 
 $like_image_path = str_replace("Videos/", "", $FILE_LOCATION).'Default/like.png'; 
 ?>
-<table align="center">
-<tr>
-<td align="center"><img src="<?php echo $like_image_path ?>" width="100" height="100"></img></td> 
-<td class="Boxed"><div id="Para">THANKS FOR THE HELP</div></td>
-</tr></table>
+<div id="Para"><p align="center"><img src="<?php echo $like_image_path ?>" width="50" height="50" ></p></img></div> 
+<div id="Para"><p align="center">THANKS FOR THE HELP</p></div></td>
 </div>
 </div> 
 </div>
 
 <div id = "TagBox">
+<input type="button" name="close_movie" value="EXIT" class="Exit" onclick="Close()" />
 <input type="button" name="play_movie" value="PLAY MOVIE" class='PlayMovie' onclick="" />
-<input type="button" name="close_movie" value="CLOSE WINDOW" class="PlayMovie" onclick="Close()" />
+<input type="button" name="close_movie" value="SAVE & CLOSE" class="SaveNClose" onclick="Close()" />
+
 </div>
 
 

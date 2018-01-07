@@ -30,7 +30,28 @@
 	
 }
 
+.Language{
+	width:150px;
+	height:150px;
+	border:5px;
+	border-style:bold;
+	font-size:20px;
+	padding:0px 25px 0px 25px;
+	color:white;
+	text-align:center;
+	background-color:green;
 
+}
+
+
+.GenrePics{
+	width:100px;
+	height:100px;
+	border-style:normal;
+	background-size:100%;
+	padding:2%;
+
+}
 .PlayMovie{
 	width:200px;
 	height:50px;
@@ -38,11 +59,41 @@
 	font-weight:bold;
 	border-style:normal;
 	text-align:center;
-	color:green;
+	color:white;
 	font-size:20px;
 	font-family:Arial;
 	border:solid green;
+	background-color:green;
 }
+
+.Exit{
+	width:200px;
+	height:50px;
+	margin:0px 98px 0px 0px ;
+	font-weight:bold;
+	border-style:groove;
+	text-align:center;
+	color:white;
+	font-size:20px;
+	border:solid red;
+	background-color:red;
+}
+
+
+.SaveNClose{
+	width:200px;
+	height:50px;
+	margin:0px 0px 0px 95px ;
+	font-weight:bold;
+	border-style:normal;
+	text-align:center;
+	color:red;
+	font-size:20px;
+	font-family:Arial;
+	border:solid yellow;
+ 	background-color:yellow;
+}
+
 
 
 .TagMovie{
@@ -50,11 +101,12 @@
 	height:50px;
 	margin:20px 45px 0px 45px ;
 	font-weight:bold;
-	border-style:normal;
+	border-style:solid;
 	text-align:center;
-	color:green;
+	color:white;
 	font-size:20px;
-	border:solid green;
+	border:3px solid green;
+	background-color:green;
 }
 
 
@@ -120,10 +172,10 @@
 #Centering{
 	position:relative;
 	border-style:normal;
-	margin:0% 45% 0% 45%;
+	margin:0% 80% 0% 0%;
 	padding:auto;
-	text-align:justify;
-	vertical-align:justify;		
+	text-align:center;
+	vertical-align:center;		
 }
 
 
@@ -134,10 +186,17 @@
 }
 
 
+
+#SquareBox:hover{
+	border-style:normal;
+	background-color:whitesmoke;
+}
+
 #TagBox{
 	margin:auto;
 	text-align:center;
-	padding:auto;
+	padding:2%;
+	
 }
 
 
@@ -209,10 +268,12 @@
 }
 
 #Boxed{
-	border-style:normal;
+	border-style:groove;
 	width:50%;
 	padding:0%;
 	text-align:center;
+	color:white;
+	background-color:black;
 }
 
 #ButtonBox{
@@ -231,6 +292,7 @@
 	
 }
 
+
 #hidebox {
 	display:none;
 }
@@ -243,8 +305,9 @@
 
 #Para{
 	margin:auto;
-	text-align:center;
-	padding:2%;
+	text-align:justify;
+	vertical-align:justify;
+	padding:0%;
 
 
 }
@@ -259,9 +322,9 @@
 	top:10%;
 	left:10%;
 	z-index:1;
-	background-color:whitesmoke;
-	opacity:.95;
+	opacity:.99;
 	overflow:scroll;
+	background-color:white;
 }
 
 #EnclosingPlayerInfo {
