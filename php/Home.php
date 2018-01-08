@@ -109,9 +109,30 @@ foreach($movie_list as $movie):
   $file_name = explode("=", $dir_list[0])[1];
   $image_path = "";
 
+  # Adding the Language and Genre headings
+  $language = "";
+  $genre = "";
+
+  if(count($dir_list) > 2) {
+    if(count($dir_list) == 3) {
+      if(explode("=", $dir_list[2])[0] == "Language") $language = explode("=", $dir_list[2])[1];
+      else if(explode("=", $dir_list[2])[0] == "Genre") $genre = explode("=", $dir_list[2])[1];
+    }
+    else if(count($dir_list) == 4) {
+      $language = explode("=", $dir_list[2])[1];
+      $genre = explode("=", $dir_list[3])[1]; 
+    } 
+  }
+  
   # Getting the Image path
   $image_path = str_replace($HOME_FOLDER,"",$file_path);
   $movie_path = str_replace($HOME_FOLDER,"",$movie_full_name)."#?".str_replace(" ", "&",$file_name);
+
+  # Merging the movie_path with Language and Genre
+  if($language != "") $movie_path = $movie_path."#?Language=".$language;
+  if($genre != "") $movie_path = $movie_path."#?Genre=".$genre;
+ 
+  #Image file path
   $image_file_name = $image_path."/Image.png";
   if(!file_exists($HOME_FOLDER.$image_file_name)) {
     $image_file_name = str_replace("/Videos","",$FILE_LOCATION).'/Default/Image.jpg';
@@ -120,6 +141,7 @@ foreach($movie_list as $movie):
   #Tag and Play togging options check 
   $play_movie = False;
   $tag_movie = True;
+
   #Checking for the Info.txt entries to toggle between Tag Movies and Play Movies. 
   if(count($dir_list) == 4) {
     $i = 0;
@@ -133,7 +155,7 @@ foreach($movie_list as $movie):
     }
     if($check_true == count($info_text)) {
       $play_movie = True;
-      $tag_movie = False;  
+      $tag_movie = False;
     }  
   } 
 

@@ -16,16 +16,29 @@ function MoviePlay(path, name="") {
 
 
 function TagMovie(path, name="") {
-  
+
   // TODO: Get the language and genre from the "HOME.php" file 
   var xmlhttp = new XMLHttpRequest();
   var movie_path = path.split("#?")[0];
   var movie_name_with_amb = (path.split("#?")[1]);
-  // Replace all the occurences -> /g/ 
+
+  /* Getting the Language and Genre details */
+  var language = "";
+  var genre = "";
+  if((path.split("#?")).length > 2 ){
+    var temp_var = path.split("#?");
+    // Presence of #? indicates the presence of next element 
+    for(i = 2; i < temp_var.length; i++) {
+      if((temp_var[i].split("="))[0] == "Language") language = temp_var[i].split("=")[1];
+      if((temp_var[i].split("="))[0] == "Genre") genre = temp_var[i].split("=")[1];
+    }
+  }
+
+  /* Replace all the occurences -> /g/  */
   var movie_name = movie_name_with_amb.replace(/&/g, " ");
-  // TODO: Get the Language and Genre if filled.
-  // TODO: Make Language to be 2 and Genre to be 3 based on Length of "path.split"
-  var param = "movie_path="+movie_path+"&movie_name="+movie_name;
+ 
+  /* Appending the language and genre details */
+  var param = "movie_path="+movie_path+"&movie_name="+movie_name+"&Language="+language+"&Genre="+genre;
   xmlhttp.open("POST", "/Movies/php/TagAndPlayVideo.php", true);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
@@ -50,6 +63,37 @@ function SayThanks() {
       document.getElementById("hidebox").style.display = "none";
   }
 }
+
+
+function GenreClick(name) {
+  var class_name = document.getElementsByClassName('GenrePics');
+  for(i=0; i < class_name.length;i++) {
+    var div = document.getElementById(class_name[i].name);    
+    if(class_name[i].name == name) {
+        div.style.border="10px solid green";
+        document.getElementById('Genre').value = class_name[i].name;
+    } else {
+        div.style.border="2px solid white";
+    }
+  }
+}
+
+function LanguageClick(name) {
+  var class_name = document.getElementsByClassName('Language');
+  for(i=0; i < class_name.length;i++) {
+    var div = document.getElementById(class_name[i].name);
+    if(class_name[i].name == name) {
+        div.style.width="250px";
+	div.style.color="red";
+        //TODO: increase the font size
+        document.getElementById('Lang').value = class_name[i].name;
+    } else {
+        div.style.border="2px solid white";
+    }
+  }
+}
+
+
 
 function highlight(name) {
   document.getElementById("Romance").style.backgroundColor="red";
