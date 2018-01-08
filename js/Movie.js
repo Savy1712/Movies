@@ -85,10 +85,14 @@ function LanguageClick(name) {
     if(class_name[i].name == name) {
         div.style.width="250px";
 	div.style.color="red";
+        div.style.fontSize="35px";
         //TODO: increase the font size
         document.getElementById('Lang').value = class_name[i].name;
     } else {
-        div.style.border="2px solid white";
+        div.style.width="150px";
+	div.style.color="white";
+	div.style.fontSize="20px";
+        
     }
   }
 }
