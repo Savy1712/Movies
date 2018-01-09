@@ -63,7 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_path = htmlspecialchars($_POST["movie_path"]);
   $language = htmlspecialchars($_POST["Language"]);
   $genre = htmlspecialchars($_POST["Genre"]);
-  # Add POST statements regarding the language and Genre 
 }
 ?>	 
 
@@ -129,11 +128,11 @@ $like_image_path = str_replace("Videos/", "", $FILE_LOCATION).'Default/like.png'
 <tr class="LanguageBox">
 <td><input type="button" name="close_movie" value="EXIT" class="Exit" onclick="Close()"  title="Close without Saving" /></td>
 <td><input type="button" name="play_movie" value="PLAY MOVIE" class='PlayMovieIn' onclick=""  /></td>
-<td align="right"><input type="button" name="close_movie" value="SAVE & CLOSE" class="SaveNClose" onclick="" title="Save the changes made and close this window" /></td>
+<td align="right"><input type="button" name="close_movie" value="SAVE & CLOSE" class="SaveNClose" 
+onclick="SaveGenreLanguage('<?php echo $movie_path; ?>')" title="Save the changes made and close this window" id="save"/></td>
 </tr>
 </table>
-
+<div id = "FileWrite"></div>
 
 </body>
 </html>
-

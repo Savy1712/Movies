@@ -123,6 +123,7 @@
 	border:solid red;
 	background-color:red;
 	white-space:normal;
+	text-align:center;
 }
 
 
@@ -369,7 +370,7 @@
 	left:10%;
 	z-index:1;
 	opacity:.99;
-	overflow:scroll;
+	overflow:vertical-scroll;
 	background-color:white;
 }
 

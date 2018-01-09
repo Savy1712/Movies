@@ -98,6 +98,27 @@ function LanguageClick(name) {
 }
 
 
+function SaveGenreLanguage(movie_path) {
+  var removing_file_name = movie_path.split("/");
+  var file_name = removing_file_name[removing_file_name.length - 1 ];   
+  var file_path = movie_path.replace(file_name, "");
+  var genre_file_path = document.getElementById("Genre").value;
+  var language_file_path = document.getElementById("Lang").value;
+  alert(genre_file_path+" "+language_file_path);
+  /* Writing the Genre and Language to file_path mentioned */
+  var xmlhttp = new XMLHttpRequest();
+  var param = "File_path="+file_path+"&Language="+language_file_path+"&Genre="+genre_file_path;
+  xmlhttp.open("POST", "/Movies/php/FileWrite.php", true);
+  xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {   
+      document.getElementById("FileWrite").innerHTML = this.responseText;         
+    }
+  };
+  xmlhttp.send(param);    
+  document.getElementById("save").value = "SAVED";
+}
+
 
 function highlight(name) {
   document.getElementById("Romance").style.backgroundColor="red";
