@@ -3,6 +3,7 @@
 include "Paths.php";
 ?>
 
+<div id = "rectangle">
 <html lang="en">
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -11,15 +12,28 @@ include "Paths.php";
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
-
-<div id = "SideHeadings"> MOVIES  </div>
-
+<div id = "SideHeadings"> MOVIES</div> 
+<div id ="RightCornering"> 
+<select class="LanguageBar" >
+<option>ENGLISH</option>
+<option>TAMIL</option>
+<option>MALAYALAM</option>
+<option>TELUGU</option>
+<option>HINDI</option>
+</select>
+</div>
 <body>
 
 <?php 
+$genre_post = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $genre_post = $_POST["genre"];
+}
+
 $i = 0;
 
 $folder_list = [];
+
 
 # Checking for "Videos/" folder existence
 if(!file_exists($HOME_FOLDER.$FILE_LOCATION)) {
@@ -54,6 +68,7 @@ if($DEBUG) {
   endforeach;
 }
 
+
 $movie_list = [];
 
 #Check for folders inside "Videos/"
@@ -86,13 +101,43 @@ if($DEBUG) {
   endforeach;
 }
 
-# Running through "Videos/<folder_name>"
-?>  
-<div id='InnerBox'>  
-<table id='MovieList'>
+# Running through "Videos/<folder_name>
+
+?>
+
+<table class = "Sort">
+<tr>
+
+<td>
+
+<div id = "SortColumn" >
+<input type="hidden" id="Display" value="" />
+<input type="button" id="ALL" name="ALL" value="ALL" class="SortContent" onclick="DisplayMovies('ALL');" />
+<input type="button" id="HORROR" name="HORROR" value="HORROR" class="SortContent" onclick="DisplayMovies('HORROR');" />
+<input type="button" id="ROMANCE" name="ROMANCE" value="ROMANCE" class="SortContent" onclick="DisplayMovies('ROMANCE');"/>
+<input type="button" id="ACTION" name="ACTION" value="ACTION" class="SortContent"  onclick="DisplayMovies('ACTION');"/>
+<input type="button" id="THRILLER" name="THRILLER" value="THRILLER" class="SortContent"  onclick="DisplayMovies('THRILLER');"/>
+<input type="button" id="SCIFI" name="SCIFI" value="SCIFI" class="SortContent" onclick="DisplayMovies('SCIFI');"/>
+<input type="button" id="MUSICAL" name="MUSICAL" value="MUSICAL" class="SortContent" onclick="DisplayMovies('MUSICAL');"/>
+<input type="button" id="MYSTERY" name="MYSTERY" value="MYSTERY" class="SortContent" onclick="DisplayMovies('MYSTERY');"/>
+
+
+
+<input type="button" id="FANTASY" name="FANTASY" value="FANTASY" class="SortContent" onclick="DisplayMovies('FANTASY');"/>
+<input type="button" id="WESTERN" name="WESTERN" value="WESTERN" class="SortContent" onclick="DisplayMovies('WESTERN');" />
+</div>
+</td>
+
+</tr>
+</table>
+<input type='hidden' name="no_movie" id='no_movie' value='0' />
+  
+<div id ='InnerBox'>  
+<table class='MovieList'>
 <tr>
 
 <?php 
+$movie_count = 0;
 foreach($movie_list as $movie):
   $file_path = $movie;
   $movie_full_name = ""; 
@@ -127,6 +172,19 @@ foreach($movie_list as $movie):
       $language = explode("=", $dir_list[2])[1];
       $genre = explode("=", $dir_list[3])[1]; 
     } 
+  }
+
+  # Genre specific search in Home page
+  if($genre_post != "ALL") { 
+    if($genre_post != "" ) {
+      if($genre == "" ) { $movie_count = $movie_count + 1; continue; } 
+      else if ($genre != $genre_post ) { $movie_count = $movie_count + 1; continue; } 
+    }
+
+    if($movie_count == count($movie_list) ) {
+      echo "<input type='hidden' name='no_movie' id='no_movie' value='1' /> ";
+      break;
+    }
   }
   
   # Getting the Image path
@@ -165,9 +223,6 @@ foreach($movie_list as $movie):
     }  
   } 
 
-  # TODO: Merge the Name, Language=<Default> and Genre=<Default>(if not present) with the $movie_path and send to TagMovie
-  # If everything is present, play movie will be present.
-
   echo "<td>";  
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'>";
@@ -203,8 +258,6 @@ foreach($movie_list as $movie):
   }
   
   echo "</div>";
-  
-
   echo "</td>";
 endforeach;
 ?>
@@ -213,6 +266,9 @@ endforeach;
 
 </div>
 
+
 </body>
+</div>
 </html>
+
 

@@ -1,16 +1,17 @@
 #rectangle {
-	border-color:black;
-	border-style:solid;
-	margin:auto;
-	padding:auto;
+	border-style:normal;
+	background-color:whitesmoke;
 }
 
+div.container{
+	width:100%;
+	height:100%;
 
+}
 #SquareBox{
 	border:5px solid green;
 	height:470px;
 	width:300px;
-	margin:2px;
 	background-color:whitesmoke;	
 }
 
@@ -35,7 +36,7 @@
 	margin:2% 0% 2% 73%;
 	background-color:red;
 	color:white;
-	border:2px solid white;
+	border:2px solid wh	ite;
 	
 
 }
@@ -55,7 +56,74 @@
 
 }
 
+.Sort {
 
+
+}
+
+.LanguageBar {
+	border:0px solid white;
+	background-color:green;
+	color:white;
+	text-align:center;
+	margin:auto;
+	width:100px;
+	height:50px;
+	overflow:scroll;
+	
+
+}
+
+#SortBox {
+	border-style:normal;
+	text-align:center;
+	font-weight:bold;
+	overflow:auto;
+
+
+}
+
+
+#SortColumn {
+	overflow:hidden;
+	border:2px solid whitesmoke;
+	width:100%;
+	height:20%;
+	margin:20px 0px 0px 0px;
+	
+}
+.SortContent:hover{
+	color:red;
+	background-color:green;
+
+}
+
+#SortColumn:active{
+	border:2px solid white;
+	color:red;
+	background-color:green;
+
+}
+
+.SortContent {
+	background-color: inherit;
+	float: left;
+	border: 3px ;
+	outline: none;
+	cursor: pointer;
+	padding: 12px 10px;
+	transition: 0.3s;
+	font-size: 17px;
+	background-color:green;
+	color:white;
+}
+
+
+
+#SortBox {
+	display:none;
+
+}
 
 #InnerSquareHeading {
 	width:200px;
@@ -128,6 +196,10 @@
 	border-style:groove;
 }
 
+
+.LanguageBar:active{
+
+}
 
 .GenrePics:active{
 	border:10px solid green;
@@ -266,8 +338,9 @@
 	text-align:center;
 }
 
+
 #InnerBox{
-	border-style:groove;
+	border-style:normal;
 	margin:auto;
 	text-align:center;
 	padding:2%;
@@ -310,18 +383,19 @@
 
 
 #SideHeadings {
-	font-size:30px;
+	font-size:40px;
 	border-color:green;
-	border-style:solid;
+	border-style:normal;
 	text-align:center;
-	color:white;
 	background-color:green;
+	color:white;
 	
 }
 
 #normal{
 	font-weight:normal;
 }
+
 
 .newseriesbut{
 	position:relative;
@@ -466,12 +540,13 @@
 
 #RightCornering{
 	display:inline-block;
-	margin:auto;
+	margin:0px 0px 0px 89.5%;
 	border-style:normal;
-	font-size:50px;
-	width:100%;
-	background-color:lightgreen;
-	text-align:center;
+	font-size:15px;
+	width:100px;
+	background-color:green;
+	text-align:right;
+	color:white;
 }
 
 #PlayerBox{

@@ -15,6 +15,37 @@ function MoviePlay(path, name="") {
 }
 
 
+function DisplayMovies(genre) {
+
+  document.getElementById("Display").value = genre;
+     
+  var xmlhttp = new XMLHttpRequest();
+  var param = "genre="+genre;
+  xmlhttp.open("POST", "/Movies/php/Home.php", true);
+  xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("rectangle").innerHTML = this.responseText;       
+    }
+  };
+
+  var class_name = document.getElementsByClassName('SortContent');
+  
+  for(i=0; i < class_name.length;i++) {
+    var div = document.getElementById(class_name[i].name);    
+    if(class_name[i].name == genre) {
+        //alert(class_name[i].name+" "+genre);
+        div.style.border="10px solid green";
+    } else {
+        div.style.border="3px";
+    }
+  }
+  xmlhttp.send(param);
+ 
+  
+}
+
+
 function TagMovie(path, name="") {
 
   // TODO: Get the language and genre from the "HOME.php" file 
