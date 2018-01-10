@@ -38,9 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else if($language == "" and $genre == "") {
       $final_write = "Name=".$name_value.';Year='.$year_value.';';
   }
-  
-  
-  $open_file = fopen($file_name,"w");
+    
+  $open_file = fopen($file_name,"w+");
   if($open_file == NULL) echo "cannot open file";
   fwrite($open_file, $final_write);
   fclose($open_file);

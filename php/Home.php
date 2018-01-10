@@ -114,11 +114,11 @@ foreach($movie_list as $movie):
   $genre = "";
 
   if(count($dir_list) > 2) {
-    if(count($dir_list) == 3) {
+    if(count($dir_list) == 4) {
       if(explode("=", $dir_list[2])[0] == "Language") $language = explode("=", $dir_list[2])[1];
       else if(explode("=", $dir_list[2])[0] == "Genre") $genre = explode("=", $dir_list[2])[1];
     }
-    else if(count($dir_list) == 4) {
+    else if(count($dir_list) == 5) {
       $language = explode("=", $dir_list[2])[1];
       $genre = explode("=", $dir_list[3])[1]; 
     } 
@@ -143,7 +143,7 @@ foreach($movie_list as $movie):
   $tag_movie = True;
 
   #Checking for the Info.txt entries to toggle between Tag Movies and Play Movies. 
-  if(count($dir_list) == 4) {
+  if(count($dir_list) == 5) {
     $i = 0;
     $info_text = array('Name', 'Year','Language','Genre');
     $check_true = 0;
@@ -153,7 +153,8 @@ foreach($movie_list as $movie):
         $check_true = $check_true + 1; 
       } 
     }
-    if($check_true == count($info_text)) {
+    
+    if($check_true == count($info_text) + 1) {
       $play_movie = True;
       $tag_movie = False;
     }  

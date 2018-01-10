@@ -115,7 +115,7 @@ function SaveGenreLanguage(movie_path) {
       document.getElementById("FileWrite").innerHTML = this.responseText;         
     }
   };
-  xmlhttp.send(param);    
+  xmlhttp.send(param);
   document.getElementById("save").value = "SAVED";
 }
 
