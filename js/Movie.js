@@ -97,15 +97,7 @@ function LanguageClick(name) {
   }
 }
 
-
-function SaveGenreLanguage(movie_path) {
-  var removing_file_name = movie_path.split("/");
-  var file_name = removing_file_name[removing_file_name.length - 1 ];   
-  var file_path = movie_path.replace(file_name, "");
-  var genre_file_path = document.getElementById("Genre").value;
-  var language_file_path = document.getElementById("Lang").value;
-  alert(genre_file_path+" "+language_file_path);
-  /* Writing the Genre and Language to file_path mentioned */
+function ExecXMLForTagging(file_path, language_file_path, genre_file_path) {
   var xmlhttp = new XMLHttpRequest();
   var param = "File_path="+file_path+"&Language="+language_file_path+"&Genre="+genre_file_path;
   xmlhttp.open("POST", "/Movies/php/FileWrite.php", true);
@@ -116,6 +108,18 @@ function SaveGenreLanguage(movie_path) {
     }
   };
   xmlhttp.send(param);
+}
+
+
+function SaveGenreLanguage(movie_path) {
+  var removing_file_name = movie_path.split("/");
+  var file_name = removing_file_name[removing_file_name.length - 1 ];   
+  var file_path = movie_path.replace(file_name, "");
+  var genre_file_path = document.getElementById("Genre").value;
+  var language_file_path = document.getElementById("Lang").value;
+  alert(genre_file_path+" "+language_file_path);
+  /* Writing the Genre and Language to file_path mentioned */
+  ExecXMLForTagging(file_path, language_file_path, genre_file_path);
   document.getElementById("save").value = "SAVED";
 }
 

@@ -39,8 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $final_write = "Name=".$name_value.';Year='.$year_value.';';
   }
     
-  $open_file = fopen($file_name,"w+");
-  if($open_file == NULL) echo "cannot open file";
+  $open_file = fopen($file_name,"w");
+  if($open_file == NULL) {
+    /* Send mail about this information : movie name and person tried to tag */  
+  }
   fwrite($open_file, $final_write);
   fclose($open_file);
 }

@@ -7,8 +7,8 @@
 
 
 #SquareBox{
-	border:5px solid green ;
-	height:400px;
+	border:5px solid green;
+	height:450px;
 	width:300px;
 	margin:2px;
 	background-color:whitesmoke;	
@@ -52,6 +52,37 @@
 	background-color:green;
 
 }
+
+
+.GenreDisplay {
+	width:100%;
+	height:20px;
+	font-size:20px;
+	position:inherit;
+	text-align:center;
+	margin:8% 45% 0px 0px;
+	background-color:red;
+	color:white;
+	border:2px solid white;
+	
+
+}
+
+.LanguageDisplay {
+	width:98%;
+	height:20px;
+	font-size:20px;
+	position:inherit;
+	text-align:center;
+	margin:8% 45% 0px 0px;
+	background-color:red;
+	color:white;
+	border:2px solid white;
+	
+
+}
+
+
 
 .Language:hover{
 	border:5px solid white;
@@ -146,7 +177,7 @@
 .TagMovie{
 	width:200px;
 	height:50px;
-	margin:20px 45px 0px 45px ;
+	margin:50px 45px 0px 45px ;
 	font-weight:bold;
 	border-style:solid;
 	text-align:center;

@@ -167,11 +167,18 @@ foreach($movie_list as $movie):
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'></div>";
   echo "<div id ='InnerSquareHeading' wrap='soft'>";
-  echo "$file_name</div>";
+  echo "$file_name";
+  echo "</div>";
   echo "<div id='InnerSquare'>";
   echo "<img src='$image_file_name' width='200' height='200'></img></div>";
   if($play_movie == True and $tag_movie == False) {
     echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
+    echo "<input type='button' name='change_tag' value='CHANGE TAG' class='PlayMovie' onclick=TagMovie('$movie_path') />";
+    echo "<table><tr>";
+    echo "<td><input type='label' name='genre_display' value='$genre' class='GenreDisplay' disabled /></td>";
+    echo "<td><input type='label' name='language_display' value='$language' class='LanguageDisplay' disabled /></td>";
+    echo "</tr>";
+    echo "</table>";
   } else if($play_movie == False and $tag_movie == True) {
       echo "<div id='Tagging' style='display:none' scrollbars='yes' ></div>";
       echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='TagMovie' onclick=TagMovie('$movie_path') />";
