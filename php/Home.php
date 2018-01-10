@@ -102,6 +102,11 @@ foreach($movie_list as $movie):
     }  
   endforeach;
  
+  $subs_available = false;
+
+  if( glob($file_path."/*.srt") == true ) {
+    $subs_available = true;
+  }
   $dir = file_get_contents($file_path."/Info.txt");
   $dir_list = explode(";", $dir);
   
@@ -163,28 +168,43 @@ foreach($movie_list as $movie):
   # TODO: Merge the Name, Language=<Default> and Genre=<Default>(if not present) with the $movie_path and send to TagMovie
   # If everything is present, play movie will be present.
 
-  echo "<td>";
+  echo "<td>";  
   echo "<div id ='SquareBox'>";
-  echo "<div id ='Straightline'></div>";
+  echo "<div id ='Straightline'>";
+  echo "</div>";
   echo "<div id ='InnerSquareHeading' wrap='soft'>";
   echo "$file_name";
   echo "</div>";
+  
   echo "<div id='InnerSquare'>";
   echo "<img src='$image_file_name' width='200' height='200'></img></div>";
   if($play_movie == True and $tag_movie == False) {
     echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
     echo "<input type='button' name='change_tag' value='CHANGE TAG' class='PlayMovie' onclick=TagMovie('$movie_path') />";
+    if($subs_available) {
+      echo "<div class ='Subs' title='Subtitle is available'>SUBS</div>";
+    } 
+
+ 
+    /*
     echo "<table><tr>";
-    echo "<td><input type='label' name='genre_display' value='$genre' class='GenreDisplay' disabled /></td>";
-    echo "<td><input type='label' name='language_display' value='$language' class='LanguageDisplay' disabled /></td>";
+    echo "<td><input type='label' name='genre_display' value='$genre' class='GenreDisplay' title='Genre' disabled /></td>";
+    echo "<td><input type='label' name='language_display' value='$language' class='LanguageDisplay' title='Language' disabled /></td>";
+  
     echo "</tr>";
-    echo "</table>";
+    echo "</table>"; */
   } else if($play_movie == False and $tag_movie == True) {
       echo "<div id='Tagging' style='display:none' scrollbars='yes' ></div>";
       echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='TagMovie' onclick=TagMovie('$movie_path') />";
+      if($subs_available) {
+        echo "<div class ='SubsTag' title='Subtitle is available' >SUBS</div>";
+      } 
+    
   }
   
   echo "</div>";
+  
+
   echo "</td>";
 endforeach;
 ?>
