@@ -138,7 +138,8 @@ if($DEBUG) {
 
 <?php 
 $movie_count = 0;
-$display = true;
+$display = False;
+
 foreach($movie_list as $movie):
   $file_path = $movie;
   $movie_full_name = ""; 
@@ -175,6 +176,17 @@ foreach($movie_list as $movie):
     } 
   }
 
+  if($movie_count == count($movie_list) - 1) {
+    $display = True;
+    echo "</tr></table><div id='ErrorBox'>";
+    echo "<table class='Sort'><tr>";
+    echo "<td><img src=".$DEFAULT_LOCATION."cross.png"." width='100' height='100' ></img></td>";
+    echo "<td> "."  NO MOVIES ARE AVAILABLE UNDER <h1 title= 'Tag movies from available ones in ALL Section'>".$genre_post."</h1> SECTION </td>";
+    echo "</tr></table>";
+    echo "</div>";
+    break;  
+  }
+
   # Genre specific search in Home page
   if($genre_post != "ALL") { 
     if($genre_post != "" ) {
@@ -182,10 +194,6 @@ foreach($movie_list as $movie):
       else if ($genre != $genre_post ) { $movie_count = $movie_count + 1; continue; }
     }
     
-    if($movie_count == count($movie_list) ) {
-      echo "<input type='hidden' name='no_movie' id='no_movie' value='1' /> ";
-      break;
-    }
   }
   
   # Getting the Image path
@@ -262,9 +270,14 @@ foreach($movie_list as $movie):
   echo "</td>";
 endforeach;
 ?>
-</tr>
-</table>
 
+<?php 
+
+if($display == False ) {
+  echo "</tr>";
+  echo "</table>";
+}
+?>
 </div>
 
 

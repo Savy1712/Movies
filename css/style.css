@@ -2,7 +2,7 @@
 	border-style:normal;
 	background-color:whitesmoke;
 	width:100%;
-	height:100%;
+	height:700px;
 }
 
 div.container{
@@ -58,10 +58,6 @@ div.container{
 
 }
 
-.Sort {
-
-
-}
 
 .LanguageBar {
 	border:0px solid white;
@@ -207,10 +203,6 @@ div.container{
 }
 
 
-.LanguageBar:active{
-
-}
-
 .GenrePics:active{
 	border:10px solid green;
 }
@@ -311,14 +303,17 @@ div.container{
 }
 
 #InnerSmallSquare{
-	position:relative;
-	border:5px solid whitesmoke;	
-        margin:0px 45px 0px 45px;
+}
+
+#Dummy{
+	border:2px ;	
 	border-style:groove;	
 	width:100px;
 	height:100px;
-}
+	background-size:100%;
+	text-align:center;
 
+}
 
 
 #heading {
@@ -371,6 +366,28 @@ div.container{
 	
 }
 
+#ErrorBox{
+	border:2px solid whitesmoke;
+	height:200%;
+	width:500px;
+	margin:5% 0% 0px 20%;
+	padding:5%;
+	background-color:green;
+	color:white;
+	
+	
+}
+#Dummy {
+		border-style:groove;
+		text-align:center;
+		margin:10px 45px 0px 45px; 
+		height:100%;
+		width:100%;
+	
+}
+
+
+
 #Centering{
 	position:relative;
 	border-style:normal;
@@ -382,9 +399,8 @@ div.container{
 
 
 #ValueBox{
-	margin:0% 0% 0% 0%;
-	text-align:center;
-	padding:1% 1% 2% 0%;
+	margin:2% 0% 0% 20%;
+	
 }
 
 
