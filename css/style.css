@@ -1,6 +1,8 @@
 #rectangle {
 	border-style:normal;
 	background-color:whitesmoke;
+	width:100%;
+	height:100%;
 }
 
 div.container{
@@ -83,6 +85,13 @@ div.container{
 
 }
 
+#Display {
+	border:2px solid red;
+	font-weight:bold;
+	font-size:20px;
+}
+
+
 
 #SortColumn {
 	overflow:hidden;
@@ -94,28 +103,29 @@ div.container{
 }
 .SortContent:hover{
 	color:red;
-	background-color:green;
-
 }
 
-#SortColumn:active{
-	border:2px solid white;
-	color:red;
-	background-color:green;
-
-}
-
-.SortContent {
-	background-color: inherit;
+.highlight {
+	background-color: red;
 	float: left;
 	border: 3px ;
-	outline: none;
 	cursor: pointer;
 	padding: 12px 10px;
 	transition: 0.3s;
 	font-size: 17px;
-	background-color:green;
 	color:white;
+}
+
+.SortContent {
+	background-color: green;
+	float: left;
+	border: 3px ;
+	cursor: pointer;
+	padding: 12px 10px;
+	transition: 0.3s;
+	font-size: 17px;
+	color:white;
+	
 }
 
 
@@ -300,6 +310,17 @@ div.container{
 	border-style:groove;	
 }
 
+#InnerSmallSquare{
+	position:relative;
+	border:5px solid whitesmoke;	
+        margin:0px 45px 0px 45px;
+	border-style:groove;	
+	width:100px;
+	height:100px;
+}
+
+
+
 #heading {
 	position:500%;
 	font-size:500%;
@@ -343,10 +364,10 @@ div.container{
 	border-style:normal;
 	margin:auto;
 	text-align:center;
-	padding:2%;
 	font-weight:bold;
 	font-size:100%;
 	overflow:auto;
+	margin:0px 0px 0px 0px; 
 	
 }
 

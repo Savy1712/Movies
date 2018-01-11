@@ -22,7 +22,7 @@ include "Paths.php";
 <option>HINDI</option>
 </select>
 </div>
-<body>
+
 
 <?php 
 $genre_post = "";
@@ -30,6 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $genre_post = $_POST["genre"];
 }
 
+
+echo "<body onload=document.getElementById('ALL').active; >";
+    
 $i = 0;
 
 $folder_list = [];
@@ -112,19 +115,16 @@ if($DEBUG) {
 
 <div id = "SortColumn" >
 <input type="hidden" id="Display" value="" />
-<input type="button" id="ALL" name="ALL" value="ALL" class="SortContent" onclick="DisplayMovies('ALL');" />
-<input type="button" id="HORROR" name="HORROR" value="HORROR" class="SortContent" onclick="DisplayMovies('HORROR');" />
-<input type="button" id="ROMANCE" name="ROMANCE" value="ROMANCE" class="SortContent" onclick="DisplayMovies('ROMANCE');"/>
-<input type="button" id="ACTION" name="ACTION" value="ACTION" class="SortContent"  onclick="DisplayMovies('ACTION');"/>
-<input type="button" id="THRILLER" name="THRILLER" value="THRILLER" class="SortContent"  onclick="DisplayMovies('THRILLER');"/>
-<input type="button" id="SCIFI" name="SCIFI" value="SCIFI" class="SortContent" onclick="DisplayMovies('SCIFI');"/>
-<input type="button" id="MUSICAL" name="MUSICAL" value="MUSICAL" class="SortContent" onclick="DisplayMovies('MUSICAL');"/>
-<input type="button" id="MYSTERY" name="MYSTERY" value="MYSTERY" class="SortContent" onclick="DisplayMovies('MYSTERY');"/>
-
-
-
-<input type="button" id="FANTASY" name="FANTASY" value="FANTASY" class="SortContent" onclick="DisplayMovies('FANTASY');"/>
-<input type="button" id="WESTERN" name="WESTERN" value="WESTERN" class="SortContent" onclick="DisplayMovies('WESTERN');" />
+<input type="button" id="ALL" name="ALL" value="ALL" class= "<?php if($genre_post == "ALL" || $genre_post == "" ) { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('ALL');" />
+<input type ="button" id="HORROR" name="HORROR" value="HORROR" class="<?php if($genre_post == "HORROR") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('HORROR');" />
+<input type="button" id="ROMANCE" name="ROMANCE" value="ROMANCE" class="<?php if($genre_post == "ROMANCE") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('ROMANCE');"/>
+<input type="button" id="ACTION" name="ACTION" value="ACTION" class="<?php if($genre_post == "ACTION") { ?> highlight <?php } else { ?> SortContent <?php } ?>"  onclick="DisplayMovies('ACTION');"/>
+<input type="button" id="THRILLER" name="THRILLER" value="THRILLER" class="<?php if($genre_post == "THRILLER") { ?> highlight <?php } else { ?> SortContent <?php } ?>"  onclick="DisplayMovies('THRILLER');"/>
+<input type="button" id="SCIFI" name="SCIFI" value="SCIFI" class="<?php if($genre_post == "SCIFI") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('SCIFI');"/>
+<input type="button" id="MUSICAL" name="MUSICAL" value="MUSICAL" class="<?php if($genre_post == "MUSICAL") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('MUSICAL');"/>
+<input type="button" id="MYSTERY" name="MYSTERY" value="MYSTERY" class="<?php if($genre_post == "MYSTERY") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('MYSTERY');"/>
+<input type="button" id="FANTASY" name="FANTASY" value="FANTASY" class="<?php if($genre_post == "FANTASY") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('FANTASY');"/>
+<input type="button" id="WESTERN" name="WESTERN" value="WESTERN" class="<?php if($genre_post == "WESTERN") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('WESTERN');" />
 </div>
 </td>
 
@@ -138,6 +138,7 @@ if($DEBUG) {
 
 <?php 
 $movie_count = 0;
+$display = true;
 foreach($movie_list as $movie):
   $file_path = $movie;
   $movie_full_name = ""; 
@@ -178,9 +179,9 @@ foreach($movie_list as $movie):
   if($genre_post != "ALL") { 
     if($genre_post != "" ) {
       if($genre == "" ) { $movie_count = $movie_count + 1; continue; } 
-      else if ($genre != $genre_post ) { $movie_count = $movie_count + 1; continue; } 
+      else if ($genre != $genre_post ) { $movie_count = $movie_count + 1; continue; }
     }
-
+    
     if($movie_count == count($movie_list) ) {
       echo "<input type='hidden' name='no_movie' id='no_movie' value='1' /> ";
       break;
