@@ -101,10 +101,13 @@ function GenreClick(name) {
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);    
     if(class_name[i].name == name) {
-        div.style.border="10px solid green";
+        div.style.border="5px solid green";
         document.getElementById('Genre').value = class_name[i].name;
     } else {
-        div.style.border="2px solid white";
+	div.style.width="100px";
+	div.style.height="100px";
+	div.style.border="1px solid whitesmoke";
+	div.style.margin="1% 0px 20% 20%"; 
     }
   }
 }
@@ -115,14 +118,16 @@ function LanguageClick(name) {
     var div = document.getElementById(class_name[i].name);
     if(class_name[i].name == name) {
         div.style.width="250px";
-	div.style.color="red";
+	div.style.color="white";
         div.style.fontSize="35px";
+	div.style.backgroundColor="red";
         //TODO: increase the font size
         document.getElementById('Lang').value = class_name[i].name;
     } else {
         div.style.width="150px";
 	div.style.color="white";
 	div.style.fontSize="20px";
+	div.style.backgroundColor="green";
         
     }
   }

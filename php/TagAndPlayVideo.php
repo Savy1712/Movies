@@ -70,15 +70,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
-<div id = "SideHeadings"><?php echo "$movie_name"; ?> </div>
+<table>
+<tr>
+<td width="120%"> <div id = "SideHeadings"><?php echo "$movie_name"; ?> </div> </td>
+<td width="20%"><input type="button" name="close_movie" value="X" class="Exit" onclick="Close()"  title="Close without Saving"></td>
+</tr>
+</table>
+
+
 
 <body>
 
-
-
-<div id = "InnerBox" >
+<div id = "Innerrectangle">
+<div id = "TagBox"> <h1>CHOOSE GENRE:</h1></div>
+<div id = "InnerRectBox" >
 <input type="hidden" name="Genre" id="Genre" value="" />
-<div id = "TagBox"> CHOOSE GENRE:</div>
 <table>
 <tr>
 <td><input type="button" name="Horror" style="background-image:url('<?php echo $GENRE_IMAGES.'horror.png'; ?>')" class="GenrePics" onclick="GenreClick('Horror');" id="Horror" /></td>
@@ -97,9 +103,11 @@ onclick="GenreClick('Fantasy');" id="Fantasy" /></td>
 </div>
 
 
-<div id = "InnerBox">
+<div id = "TagBox"><h1> CHOOSE LANGUAGE:</h1> </div>
+
+<div id = "InnerRectBox">
 <input type="hidden" name="Lang" id="Lang" value="" /> 
-<div id = "TagBox"> CHOOSE LANGUAGE: </div>
+
 <table class="LanguageBox">
 <tr>
 <td><input type="button" name="english" value="ENGLISH" class="Language" onclick="LanguageClick('english');" id="english"></td>
@@ -124,15 +132,16 @@ $like_image_path = str_replace("Videos/", "", $FILE_LOCATION).'Default/like.png'
 </div> 
 </div>
 
-<table>
-<tr class="LanguageBox">
-<td><input type="button" name="close_movie" value="EXIT" class="Exit" onclick="Close()"  title="Close without Saving" /></td>
-<td><input type="button" name="play_movie" value="PLAY MOVIE" class='PlayMovieIn' onclick=""  /></td>
-<td align="right"><input type="button" name="close_movie" value="SAVE & CLOSE" class="SaveNClose" 
-onclick="SaveGenreLanguage('<?php echo $movie_path; ?>')" title="Save the changes made and close this window" id="save"/></td>
+<table id = "ButtonBox">
+<tr>
+<td width="70%"><input type="button" name="close_movie" value="SAVE" class="SaveNClose" 
+onclick="SaveGenreLanguage('<?php echo $movie_path; ?>')" title="Save the changes made and close this window" id="save"  /></td>
+<td width="30%"><input type="button" name="play_movie" value="PLAY MOVIE"  class='PlayMovieIn' onclick=""  /></td>
+
 </tr>
 </table>
 <div id = "FileWrite"></div>
 
+</div>
 </body>
 </html>

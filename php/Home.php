@@ -12,7 +12,7 @@ include "Paths.php";
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
-<div id = "SideHeadings"> MOVIES</div> 
+<div id = "SideHeadings">MOVIES </div> 
 <div id ="RightCornering"> 
 <select class="LanguageBar" >
 <option>ENGLISH</option>
@@ -130,7 +130,7 @@ if($DEBUG) {
 
 </tr>
 </table>
-<input type='hidden' name="no_movie" id='no_movie' value='0' />
+
   
 <div id ='InnerBox'>  
 <table class='MovieList'>
