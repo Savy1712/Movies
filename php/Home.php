@@ -9,11 +9,27 @@ include "Paths.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link type="text/css" rel="stylesheet" href="/Movies/css/style.css">
 
+
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
-<div id = "SideHeadings">MOVIES </div> 
-<!--
 
+<div class="Enclose">
+<table>
+<tr>
+<td>
+<div class="Symbol">
+<img src="<?php echo $DEFAULT_LOCATION.'movie.png'; ?>" width="70" height="50" class="Symbol" title="GO TO HOME" onclick="GoHome()" />
+</div>
+</td>
+<td> 
+<div id = "SideHeadingsFront">MOVIES
+<input type="text"   placeholder="Search Movies by Name..." width="100%" class="Align">
+<input type="button" value="FIND" class="Find" /> 
+</div>
+</td>
+</tr></table>
+</div>
+<!--
 <div id ="RightCornering"> 
 <select class="LanguageBar" >
 <option>ENGLISH</option>
@@ -23,7 +39,10 @@ include "Paths.php";
 <option>HINDI</option>
 </select>
 </div>
+
 -->
+
+
 
 <?php 
 $genre_post = "";
@@ -248,7 +267,7 @@ foreach($movie_list as $movie):
   echo "<div id ='Straightline'>";
   echo "</div>";
   echo "<div id ='InnerSquareHeading' wrap='soft'>";
-  echo "$file_name";
+  echo "<center>$file_name</center>";
   echo "</div>";
   
   echo "<div id='InnerSquare'>";

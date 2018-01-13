@@ -101,8 +101,8 @@ div.container{
 	overflow:hidden;
 	border:2px solid whitesmoke;
 	width:100%;
-	height:20%;
-	margin:20px 0px 0px 0px;
+	height:30%;
+	margin:5% 0px 0px 0px;
 	
 }
 .SortContent:hover{
@@ -149,6 +149,9 @@ div.container{
 	text-align:center-justify;
 	color:white;
 	font-size:18px;
+	vertical-align:middle;
+	align-items:center;
+	
 	
 }
 
@@ -410,7 +413,9 @@ div.container{
 
 #SquareBox:hover{
 	border-style:normal;
+	border:10px solid whitesmoke;	
 	background-color:white;
+
 }
 
 #MovieName {
@@ -443,10 +448,51 @@ div.container{
 	
 }
 
-#Align {
+#SideHeadingsFront {
+	font-size:30px;
+	border-color:green;
+	border-style:5px solid green;
+	background-color:green;
+	color:white;
+	height:70px;
+	text-align:left;
+	width:800px;
+}
 
+.Enclose {
+	background-color:green;
 
 }
+
+.Align {
+	width:50%;
+	height:50%;
+	margin-left:15%;
+	margin-top:1.5%;
+	background-color:whitesmoke;
+}
+
+
+.Symbol {
+	margin:1px;
+	background-color:green;
+	color:white;
+	border:4px solid green;
+
+}
+
+
+.Find {
+	width:10%;
+	height:65%;
+	font-size:20px;
+	margin:1.5% 0px 0px 0px;
+	background-size:100% ;
+	color:white;
+	background-color:green;
+	border-color:green;
+}
+
 #normal{
 	font-weight:normal;
 }
@@ -593,12 +639,11 @@ div.container{
 
 #RightCornering{
 	display:inline-block;
-	margin:0px 0px 0px 89.5%;
+	margin:0px 0px 0px 10%;
 	border-style:normal;
 	font-size:15px;
 	width:100px;
 	background-color:green;
-	text-align:right;
 	color:white;
 }
 

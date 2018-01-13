@@ -15,6 +15,11 @@ function MoviePlay(path, name="") {
 }
 
 
+function GoHome() {
+  Close();
+}
+
+
 function DisplayMovies(genre) {
 
   document.getElementById("Display").value = genre;
