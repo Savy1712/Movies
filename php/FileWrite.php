@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $open_file = fopen($file_name,"w");
   if($open_file == NULL) {
     /* Send mail about this information : movie name and person tried to tag */  
+    echo "Information couldnot be saved";
   }
   fwrite($open_file, $final_write);
   fclose($open_file);
