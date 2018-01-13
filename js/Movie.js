@@ -3,12 +3,12 @@ function MoviePlay(path, name="") {
   var xmlhttp = new XMLHttpRequest();
   var movie_path = path.split("#?")[0];
   var movie_name = (path.split("#?")[1]).replace("&", " ");
-  var param = "movie_path="+movie_path;
+  var param = "movie_path="+movie_path+"&movie_name="+movie_name;
   xmlhttp.open("POST", "/Movies/php/PlayVideo.php", true);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("InnerBox").innerHTML = this.responseText;       
+      document.getElementById("rectangle").innerHTML = this.responseText;       
     }
   };
   xmlhttp.send(param);  
