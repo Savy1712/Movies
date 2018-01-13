@@ -11,8 +11,9 @@ include "Paths.php";
 
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
-
 <div id = "SideHeadings">MOVIES </div> 
+<!--
+
 <div id ="RightCornering"> 
 <select class="LanguageBar" >
 <option>ENGLISH</option>
@@ -22,7 +23,7 @@ include "Paths.php";
 <option>HINDI</option>
 </select>
 </div>
-
+-->
 
 <?php 
 $genre_post = "";
@@ -100,7 +101,7 @@ endforeach;
 
 if($DEBUG) {
   foreach($movie_list as $movie):
-    echo $movie;
+    echo explode("/", $movie)[6];
   endforeach;
 }
 
@@ -113,7 +114,7 @@ if($DEBUG) {
 
 <td>
 
-<div id = "SortColumn" >
+<div class = "SortColumn" >
 <input type="hidden" id="Display" value="" />
 <input type="button" id="ALL" name="ALL" value="ALL" class= "<?php if($genre_post == "ALL" || $genre_post == "" ) { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('ALL');" />
 <input type ="button" id="HORROR" name="HORROR" value="HORROR" class="<?php if($genre_post == "HORROR") { ?> highlight <?php } else { ?> SortContent <?php } ?>" onclick="DisplayMovies('HORROR');" />
@@ -131,12 +132,20 @@ if($DEBUG) {
 </tr>
 </table>
 
-  
-<div id ='InnerBox'>  
+
+
+<?php
+$one_time = False;
+foreach ($folder_list as $folder):
+/*<div id = "TagBox"><h1> <?php echo explode("_", $folder)[1]; ?> </h1> </div> */
+
+?>
+<div id ='InnerBox'> 
 <table class='MovieList'>
 <tr>
 
 <?php 
+
 $movie_count = 0;
 $display = False;
 
@@ -176,7 +185,7 @@ foreach($movie_list as $movie):
     } 
   }
 
-  if($movie_count == count($movie_list) - 1) {
+  if($movie_count == count($movie_list) - 1 and $one_time == False) {
     $display = True;
     echo "</tr></table><div id='ErrorBox'>";
     echo "<table class='Sort'><tr>";
@@ -184,6 +193,7 @@ foreach($movie_list as $movie):
     echo "<td> "."  NO MOVIES ARE AVAILABLE UNDER <h1 title= 'Tag movies from available ones in ALL Section'>".$genre_post."</h1> SECTION </td>";
     echo "</tr></table>";
     echo "</div>";
+    $one_time = True;
     break;  
   }
 
@@ -232,6 +242,7 @@ foreach($movie_list as $movie):
     }  
   } 
 
+  if (strpos($movie, $folder) !== false) { 
   echo "<td>";  
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'>";
@@ -268,6 +279,7 @@ foreach($movie_list as $movie):
   
   echo "</div>";
   echo "</td>";
+  }
 endforeach;
 ?>
 
@@ -279,6 +291,10 @@ if($display == False ) {
 }
 ?>
 </div>
+
+<?php
+endforeach;
+?>
 
 
 </body>
