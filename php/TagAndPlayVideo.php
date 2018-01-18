@@ -70,17 +70,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
+<div class = "Enclose">
 <table>
 <tr>
 <td width="120%"> <div id = "SideHeadings"><?php echo "$movie_name"; ?> </div> </td>
 <td width="20%"><input type="button" name="close_movie" value="X" class="Exit" onclick="Close()"  title="Close without Saving"></td>
 </tr>
 </table>
+</div>
 
 
 
 <body>
-
 <div id = "Innerrectangle">
 <div id = "TagBox"> <h1>CHOOSE GENRE:</h1></div>
 <div id = "InnerRectBox" >
