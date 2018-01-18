@@ -16,42 +16,39 @@ include "Paths.php";
 <div class="Enclose">
 <table>
 <tr>
-<td>
-<div class="Symbol">
-<img src="<?php echo $DEFAULT_LOCATION.'movie.png'; ?>" width="70" height="50" class="Symbol" title="GO TO HOME" onclick="GoHome()" />
-</div>
+<td class="Symbol">
+<img src="<?php echo $DEFAULT_LOCATION.'movie.png'; ?>" width="70" height="50"  title="GO TO HOME" onclick="GoHome()" />
 </td>
-<td> 
-<div id = "SideHeadingsFront">MOVIES
-<input type="text"   placeholder="Search Movies by Name..." width="100%" class="Align">
-<input type="button" value="FIND" class="Find" /> 
-</div>
+<td class="MovieName"> 
+<div id = "SideHeadingsFront">MOVIES</div></td>
+<td class="Align">
+<input type="text" id="FindMovie"  placeholder="Search Movies by Name..." class="Move" width="100%" value="<?php echo $search_movie; ?>" />
+</td>
+<td class="Find">
+<input type="button" value="FIND" class="FindBut" onclick="FindMovie()"/> 
 </td>
 </tr></table>
 </div>
 <!--
 <div id ="RightCornering"> 
-<select class="LanguageBar" >
-<option>ENGLISH</option>
-<option>TAMIL</option>
-<option>MALAYALAM</option>
-<option>TELUGU</option>
-<option>HINDI</option>
-</select>
 </div>
 
 -->
 
+<body>
+<div id = "Body">
 
 
 <?php 
 $genre_post = "";
+$search_movie = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $genre_post = $_POST["genre"];
+  $search_movie = $_POST["search_movie"];
 }
 
 
-echo "<body onload=document.getElementById('ALL').active; >";
+
     
 $i = 0;
 
@@ -118,9 +115,10 @@ foreach ($folder_list as $folder_name):
 endforeach;
 
 
+
 if($DEBUG) {
   foreach($movie_list as $movie):
-    echo explode("/", $movie)[6];
+    echo explode("/", $movie)[6].' '.$movie.'\n';
   endforeach;
 }
 
@@ -155,6 +153,11 @@ if($DEBUG) {
 
 <?php
 $one_time = False;
+$search_count = 0;
+$movie_count = 0;
+$display = False;
+
+
 foreach ($folder_list as $folder):
 /*<div id = "TagBox"><h1> <?php echo explode("_", $folder)[1]; ?> </h1> </div> */
 
@@ -165,8 +168,8 @@ foreach ($folder_list as $folder):
 
 <?php 
 
-$movie_count = 0;
-$display = False;
+
+
 
 foreach($movie_list as $movie):
   $file_path = $movie;
@@ -176,8 +179,10 @@ foreach($movie_list as $movie):
       $movie_full_name = $movie_array[0];
     }  
   endforeach;
- 
+  
   $subs_available = false;
+
+
 
   if( glob($file_path."/*.srt") == true ) {
     $subs_available = true;
@@ -188,6 +193,25 @@ foreach($movie_list as $movie):
   # Getting the Movie name 
   $file_name = explode("=", $dir_list[0])[1];
   $image_path = "";
+
+  if($search_movie != "" ) {
+    if (strpos(strtoupper($file_name), strtoupper($search_movie)) !== False) {
+    } else {
+        $search_count = $search_count + 1; 
+        if($search_count == count($movie_list) - 1 and $one_time == False ) {
+          echo "</tr></table><div id='ErrorBox'>";
+          echo "<table class='Sort'><tr>";
+          echo "<td><img src=".$DEFAULT_LOCATION."cross.png"." width='100' height='100' ></img></td>";
+          echo "<td> <h1>Sorry ! Not available </h1> </td>";
+          echo "</tr></table>";
+          echo "</div>";
+          $one_time = True;
+        } else  { continue; }
+     }
+   } 
+   
+
+
 
   # Adding the Language and Genre headings
   $language = "";
@@ -302,6 +326,8 @@ foreach($movie_list as $movie):
 endforeach;
 ?>
 
+
+
 <?php 
 
 if($display == False ) {
@@ -315,6 +341,7 @@ if($display == False ) {
 endforeach;
 ?>
 
+</div>
 
 </body>
 </div>
