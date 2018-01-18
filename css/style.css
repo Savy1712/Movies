@@ -438,10 +438,11 @@ div.container{
 
 .MovieName {
 	border:1px solid green;
-	margin:0px 35% 0px 35%;
 	text-align:center;
 	background-color:green;
 	color:white;
+	margin:0px 35% 0px 30%;
+	
 
 }
 
