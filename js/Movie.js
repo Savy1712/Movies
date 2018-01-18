@@ -23,7 +23,6 @@ function GoHome() {
 function DisplayMovies(genre) {
 
   document.getElementById("Display").value = genre;
-     
   var xmlhttp = new XMLHttpRequest();
   var param = "genre="+genre;
   xmlhttp.open("POST", "/Movies/php/Home.php", true);
@@ -86,6 +85,52 @@ function TagMovie(path, name="") {
   xmlhttp.send(param);     
 }
 
+
+function FindMovie() {
+  var find_movie = document.getElementById("FindMovie").value;
+  var xmlhttp = new XMLHttpRequest();
+  var param = "genre="+"ALL"+"&search_movie="+find_movie;
+  xmlhttp.open("POST", "/Movies/php/Home.php", true);
+  xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+  xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("rectangle").innerHTML = this.responseText;          
+    }
+  };
+  xmlhttp.send(param);
+}
+
+function Go(num) {
+  var genre_list =[];// ["Horror", "Romance", "Action" ];//, "Fantasy", "Musical", "Mystery", "Scifi", "Thriller", "Western"];
+  var div = document.getElementsByClassName("GenrePics");
+  
+  var visible_name = document.getElementById("ShowGenre").value;
+  var length = div.length;
+
+  //populate the array with genre elements
+  for(i = 0; i < length; i++) {
+    genre_list[i] = div[i].name;
+  }
+  
+
+
+
+
+
+  // Finding the prev or next element
+  if(num == 1) {  
+    for(i = 0; i < genre_list.length; i++) {
+      if(visible_name == genre_list[i]) {
+        alert(visible_name);
+        document.getElementById(genre_list[i]).style.visibility = "hidden";
+        document.getElementById(genre_list[i+1]).style.visibility="visible";
+      } 
+    }
+  }
+   
+   
+}
+
 function Close() {
   location.href ="/Movies/php/Home.php";
 }
@@ -112,7 +157,6 @@ function GenreClick(name) {
 	div.style.width="100px";
 	div.style.height="100px";
 	div.style.border="1px solid whitesmoke";
-	div.style.margin="1% 0px 20% 20%"; 
     }
   }
 }
@@ -122,16 +166,12 @@ function LanguageClick(name) {
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);
     if(class_name[i].name == name) {
-        div.style.width="250px";
-	div.style.color="white";
-        div.style.fontSize="35px";
-	div.style.backgroundColor="red";
+        div.style.color="white";
+        div.style.backgroundColor="red";
         //TODO: increase the font size
         document.getElementById('Lang').value = class_name[i].name;
     } else {
-        div.style.width="150px";
-	div.style.color="white";
-	div.style.fontSize="20px";
+        div.style.color="white";
 	div.style.backgroundColor="green";
         
     }

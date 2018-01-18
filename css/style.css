@@ -12,6 +12,15 @@
 }
 
 
+.Back {
+	margin:auto;
+	padding:1%;
+	width:100%;
+	height:100%;
+
+}
+
+
 
 div.container{
 	width:100%;
@@ -68,16 +77,13 @@ div.container{
 
 
 .LanguageBar {
-	border:0px solid white;
+	border:4px solid whitesmoke;
 	background-color:green;
 	color:white;
 	text-align:center;
-	margin:auto;
-	width:100px;
+	margin:0px 0px 0px 65%;
+	width:120px;
 	height:50px;
-	overflow:scroll;
-	
-
 }
 
 #SortBox {
@@ -155,20 +161,23 @@ div.container{
 	
 }
 
+
 .Language{
 	width:150px;
 	height:100px;
 	border:2px solid green;
 	font-size:20px;
-	margin:0px 40% 0px 0px;
-	padding:2%;
+	margin:10% 10% 0px 10%;
 	color:white;
 	text-align:center;
 	background-color:green;
-	border-radius:100%;
-
 }
 
+.InfoTable {
+	border:5px solid green;
+	width:100%;
+
+}
 
 .GenreDisplay {
 	width:98%;
@@ -197,24 +206,41 @@ div.container{
 
 }
 
-
 .Language:hover{
 	background-color:red;
 	color:white;
 }
 
-.GenrePics:hover{
-	border:10px solid green;
-}
 
+.GenrePics.active {
+	border-bottom:4px solid green;
+
+}
 
 .GenrePics{
 	width:100px;
 	height:100px;
-	border:1px solid whitesmoke;
 	background-size:100%;
-	margin:1% 0px 20% 20%; 
-	
+	margin:20% 0px 0% 0px;
+	overflow:auto;
+	border:1px solid whitesmoke;
+}
+
+
+
+#InnerRectBox{
+	height:250px;
+	width:75%;
+	margin:5% 10% 0px 1%;
+	overflow:auto;
+	border:10px solid whitesmoke;	
+}
+
+.GenreTable{
+	position:relative;
+	width:200px;
+	height:10px;
+	margin:5% 0px 0px 0px;
 }
 
 .PlayMovie{
@@ -243,17 +269,21 @@ div.container{
 }
 
 .Exit{
-	position:relative;
-	width:100%;
-	height:70px;
-	font-weight:bold;
-	border:5px solid red;
-	color:white;
+	border:4px solid red;	
+	height:55px;
+	width:50px;
 	font-size:20px;
+	font-family:bold;
 	background-color:red;
-
+	color:white;
 }
 
+
+.TagName {
+	background-color:green;	
+	color:white;
+	text-align:center;
+}
 
 .SaveNClose{
 	width:160px;
@@ -282,7 +312,6 @@ div.container{
 	border:3px solid green;
 	background-color:green;
 }
-
 
 
 #InnerSquare{
@@ -360,16 +389,6 @@ div.container{
 }
 
 
-#InnerRectBox{
-	text-align:center;
-	font-weight:bold;
-	font-size:100%;
-	overflow:auto;
-	margin:0px 0px 0px 0px;
-	border-bottom:4px solid green;
-	
-}
-
 #ButtonBox{
 	text-align:center;
 	font-weight:bold;
@@ -413,27 +432,26 @@ div.container{
 
 #SquareBox:hover{
 	border-style:normal;
-	border:10px solid whitesmoke;	
 	background-color:white;
 
 }
 
-#MovieName {
-	border: 3px solid whitesmoke;
-	margin: auto;
+.MovieName {
+	border:1px solid green;
+	margin:0px 35% 0px 35%;
 	text-align:center;
 	background-color:green;
 	color:white;
-	width:100%;
 
 }
 
 #TagBox{
 	border-style:normal;
-	text-align:left;
-	color:green;
-	width:100%;
-	
+	text-align:center;
+	width:100px;
+	height:250px;
+	margin:20% 0px 0px 0px;
+	font-size:20px;
 }
 
 
@@ -443,7 +461,8 @@ div.container{
 	border-style:3px solid green;
 	background-color:green;
 	color:white;
-	height:70px;
+	height:45px;
+	width:100%;
 	text-align:center;
 	
 }
@@ -454,9 +473,10 @@ div.container{
 	border-style:5px solid green;
 	background-color:green;
 	color:white;
-	height:70px;
-	text-align:left;
-	width:800px;
+	height:auto;
+	text-align:center;
+	width:10%;
+	margin:5% 5% 0px 0px;	
 }
 
 .Enclose {
@@ -464,30 +484,50 @@ div.container{
 
 }
 
+.Move {
+	margin:0px 0% 0px 20%;
+	height:38px;
+	width:100%;
+	border:2px solid green;
+}
+
 .Align {
 	width:50%;
 	height:50%;
-	margin-left:15%;
-	margin-top:1.5%;
-	background-color:whitesmoke;
+	margin-top:2%;
+	background-color:green;
 }
 
+#Body {
+	background-color:whitesmoke;
+
+}
 
 .Symbol {
 	margin:1px;
 	background-color:green;
 	color:white;
-	border:4px solid green;
+	border:6px solid green;
 
 }
 
+.FindBut {
+	border:2px solid red;
+	font-size:25px;
+	font-family:bold;
+	height:42px;
+	width:20%;
+	margin:auto;
+	color:white;
+	background-color:red;
+
+}
 
 .Find {
-	width:10%;
+	width:60%;
 	height:65%;
 	font-size:20px;
 	margin:1.5% 0px 0px 0px;
-	background-size:100% ;
 	color:white;
 	background-color:green;
 	border-color:green;
@@ -520,9 +560,12 @@ div.container{
 .back_main {
 	margin:auto;
 	width:150px;
-	height:50px;
+	height:90px;
 	text-align:center;
 	font-weight:bold;
+	background-color:green;
+	color:white;
+	border:1px solid green;
 }
 
 .NextBut {
@@ -599,12 +642,13 @@ div.container{
 	margin:auto;
 	text-align:center;
 	position:fixed;
-	width:75%;
+	width:90%;
 	height:auto;
 	top:10%;
-	left:10%;
+	left:2%;
 	z-index:1;
 	opacity:.99;
+	border:10px solid green;
 	overflow:vertical-scroll;
 	background-color:white;
 }

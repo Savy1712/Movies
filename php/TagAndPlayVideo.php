@@ -83,10 +83,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 <div id = "Innerrectangle">
-<div id = "TagBox"> <h1>CHOOSE GENRE:</h1></div>
-<div id = "InnerRectBox" >
-<input type="hidden" name="Genre" id="Genre" value="" />
+
 <table>
+<tr class="InfoTable">
+<td id="TagBox"> CHOOSE GENRE </td>
+
+<td>
+<div id = "InnerRectBox">
+<input type="hidden" name="Genre" id="Genre" value="" />
+<table class="GenreTable">
 <tr>
 <td><input type="button" name="Horror" style="background-image:url('<?php echo $GENRE_IMAGES.'horror.png'; ?>')" class="GenrePics" onclick="GenreClick('Horror');" id="Horror" /></td>
 <td><input type="button" name="Romance" style="background-image:url('<?php echo $GENRE_IMAGES.'Romance.jpeg'; ?>')" class="GenrePics" onfocus="highlight('Romance');" id="Romance" onclick="GenreClick('Romance');" /></td>
@@ -102,14 +107,16 @@ onclick="GenreClick('Fantasy');" id="Fantasy" /></td>
 </tr>
 </table>
 </div>
+</td>
+</tr>
+<tr>
 
-
-<div id = "TagBox"><h1> CHOOSE LANGUAGE:</h1> </div>
-
+<td id = "TagBox"> CHOOSE LANGUAGE </td>
+<td>
 <div id = "InnerRectBox">
 <input type="hidden" name="Lang" id="Lang" value="" /> 
 
-<table class="LanguageBox">
+<table class="GenreTable">
 <tr>
 <td><input type="button" name="english" value="ENGLISH" class="Language" onclick="LanguageClick('english');" id="english"></td>
 <td><input type="button" name="tamil" value="TAMIL" class="Language" onclick="LanguageClick('tamil');" id="tamil"></td>
@@ -120,6 +127,10 @@ onclick="GenreClick('Fantasy');" id="Fantasy" /></td>
 </tr>
 </table>
 </div>
+
+</td>
+</tr>
+</table>
 
 <div id = "hidebox">
 <div id="InnerBox">
