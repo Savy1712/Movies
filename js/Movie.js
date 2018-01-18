@@ -147,6 +147,8 @@ function SayThanks() {
 
 
 function GenreClick(name) {
+  document.getElementById("SaveEnclose").style.visibility="visible";
+  document.getElementById("SelectShowGenre").style.visibility= "visible";
   var class_name = document.getElementsByClassName('GenrePics');
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);    
@@ -162,6 +164,8 @@ function GenreClick(name) {
 }
 
 function LanguageClick(name) {
+  document.getElementById("SaveEnclose").style.visibility="visible";
+  document.getElementById("SelectShowLanguage").style.visibility= "visible";
   var class_name = document.getElementsByClassName('Language');
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);
