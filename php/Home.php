@@ -312,7 +312,6 @@ foreach($movie_list as $movie):
     echo "</tr>";
     echo "</table>"; */
   } else if($play_movie == False and $tag_movie == True) {
-      echo "<div id='Tagging' style='display:none' scrollbars='yes' ></div>";
       echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='TagMovie' onclick=TagMovie('$movie_path') />";
       if($subs_available) {
         echo "<div class ='SubsTag' title='Subtitle is available' >SUBS</div>";
@@ -345,6 +344,10 @@ endforeach;
 
 </body>
 </div>
+
+<div id='Tagging' style='display:none' scrollbars='yes' ></div>
+
+
 </html>
 
 

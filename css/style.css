@@ -166,9 +166,11 @@ div.container{
 
 #SelectShowLanguage{
 	visibility:hidden;
+	margin:0px 35% 0px 35%;
 }
 
 #SelectShowGenre{
+	margin:0px 35% 0px 35%;
 	visibility:hidden;
 }
 
@@ -180,11 +182,11 @@ div.container{
 }
 
 .Language{
-	width:150px;
-	height:100px;
-	border:2px solid green;
-	font-size:20px;
-	margin:10% 50% 0px 0%;
+	width:200px;
+	height:160px;
+	border:4px solid green;
+	font-size:30px;
+	margin:5% 20% 5% 20%;
 	color:white;
 	background-color:green;
 }
@@ -252,7 +254,7 @@ div.container{
 	position:relative;
 	height:250px;
 	width:80%;
-	margin:3% 10% 0px 0%;
+	margin:3% 10% 0px 2%;
 	overflow:auto;
 	border:10px solid whitesmoke;
 }
@@ -261,7 +263,7 @@ div.container{
 	position:relative;
 	width:200px;
 	height:10px;
-	margin:5% 0px 0px 0px;
+	margin:3% 0px 0px 0px;
 }
 
 .PlayMovie{
@@ -481,11 +483,11 @@ div.container{
 
 #TagBox{
 	border-style:normal;
-	text-align:center;
-	horizontal-align:center;
 	margin:30% 0px 0px 0px;
-	font-size:20px;
-	width:auto;
+	font-size:30px;
+	font-style:bold;
+	word-wrap:break-word;
+	text-align:center;
 }
 
 
@@ -676,10 +678,10 @@ div.container{
 	margin:auto;
 	text-align:center;
 	position:fixed;
-	width:80%;
+	width:85%;
 	top:1%;
 	left:3%;
-	z-index:1;
+	z-index:200;
 	opacity:.99;
 	border:10px solid green;
 	overflow-y:auto;

@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <table width="100%">
 <tr class="InfoTable">
-<td text-align="center" ><div id = "TagBox"> CHOOSE GENRE
-<img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowGenre"></img></div></td>
+<td id = "TagBox"> <b>GENRE</b><br>
+<img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowGenre"></img></td>
 
 </td>
 
@@ -70,7 +70,7 @@ onclick="GenreClick('Fantasy');" id="Fantasy" /></td>
 </td>
 </tr>
 <tr>
-<td id = "TagBox"> CHOOSE LANGUAGE 
+<td id = "TagBox"><b> LANGUAGE </b><br>
 
 <img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowLanguage" ></img></td>
 

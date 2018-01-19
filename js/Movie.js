@@ -71,7 +71,8 @@ function TagMovie(path, name="") {
 
   /* Replace all the occurences -> /g/  */
   var movie_name = movie_name_with_amb.replace(/&/g, " ");
- 
+   document.getElementById("rectangle").style.opacity="0.3";
+  
   /* Appending the language and genre details */
   var param = "movie_path="+movie_path+"&movie_name="+movie_name+"&Language="+language+"&Genre="+genre;
   xmlhttp.open("POST", "/Movies/php/TagAndPlayVideo.php", true);
