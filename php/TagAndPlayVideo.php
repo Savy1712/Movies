@@ -43,8 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <table width="100%">
 <tr class="InfoTable">
-<td id="TagBox"> CHOOSE GENRE
-<img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowGenre"></img></td>
+<td text-align="center" ><div id = "TagBox"> CHOOSE GENRE
+<img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowGenre"></img></div></td>
+
 </td>
 
 <td>
@@ -75,6 +76,7 @@ onclick="GenreClick('Fantasy');" id="Fantasy" /></td>
 
 
 <td>
+
 <div id = "InnerRectBox">
 <input type="hidden" name="Lang" id="Lang" value="" /> 
 <table class="GenreTable">
@@ -93,6 +95,9 @@ onclick="GenreClick('Fantasy');" id="Fantasy" /></td>
 </tr>
 </table>
 
+</div>
+
+
 <table id = "SaveEnclose" ><tr>
 <td>
 <img src= "<?php echo $DEFAULT_LOCATION.'save.ico'; ?>" class="ImgSave" ></img>
@@ -105,6 +110,5 @@ onclick="SaveGenreLanguage('<?php echo $movie_path; ?>')" title="Save the change
 </tr></table>
 <div id = "FileWrite"></div>
 
-</div>
 </body>
 </html>
