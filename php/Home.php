@@ -181,19 +181,29 @@ foreach($movie_list as $movie):
   endforeach;
   
   $subs_available = false;
-
+  
+  
 
 
   if( glob($file_path."/*.srt") == true ) {
     $subs_available = true;
   }
-  $dir = file_get_contents($file_path."/Info.txt");
-  $dir_list = explode(";", $dir);
-  
-  # Getting the Movie name 
-  $file_name = explode("=", $dir_list[0])[1];
-  $image_path = "";
 
+  $dir = "";
+  $dir_list = [];
+  $file_name = "";
+  $language = "";
+  $genre = "";
+
+  if(!file_exists($file_path."/Info.txt")) {
+
+  } else {  
+    $dir = file_get_contents($file_path."/Info.txt");
+    $dir_list = explode(";", $dir);
+    # Getting the Movie name 
+    $file_name = explode("=", $dir_list[0])[1];
+ 
+ 
   if($search_movie != "" ) {
     if (strpos(strtoupper($file_name), strtoupper($search_movie)) !== False) {
     } else {
@@ -214,9 +224,7 @@ foreach($movie_list as $movie):
 
 
   # Adding the Language and Genre headings
-  $language = "";
-  $genre = "";
-
+  
   if(count($dir_list) > 2) {
     if(count($dir_list) == 4) {
       if(explode("=", $dir_list[2])[0] == "Language") $language = explode("=", $dir_list[2])[1];
@@ -246,16 +254,20 @@ foreach($movie_list as $movie):
       if($genre == "" ) { $movie_count = $movie_count + 1; continue; } 
       else if ($genre != $genre_post ) { $movie_count = $movie_count + 1; continue; }
     }
-    
-  }
+  }  
   
+
+  
+  # Merging the movie_path with Language and Genre
+  if($language != "") $movie_path = $movie_path."#?Language=".$language;
+  if($genre != "") $movie_path = $movie_path."#?Genre=".$genre; 
+
+  } // Else closing
+  
+
   # Getting the Image path
   $image_path = str_replace($HOME_FOLDER,"",$file_path);
   $movie_path = str_replace($HOME_FOLDER,"",$movie_full_name)."#?".str_replace(" ", "&",$file_name);
-
-  # Merging the movie_path with Language and Genre
-  if($language != "") $movie_path = $movie_path."#?Language=".$language;
-  if($genre != "") $movie_path = $movie_path."#?Genre=".$genre;
  
   #Image file path
   $image_file_name = $image_path."/Image.png";
@@ -284,14 +296,14 @@ foreach($movie_list as $movie):
       $tag_movie = False;
     }  
   } 
-
+  
   if (strpos($movie, $folder) !== false) { 
   echo "<td>";  
   echo "<div id ='SquareBox'>";
   echo "<div id ='Straightline'>";
   echo "</div>";
   echo "<div id ='InnerSquareHeading' wrap='soft'>";
-  echo "<center>$file_name</center>";
+  echo "<center>".strtoupper($file_name)."</center>";
   echo "</div>";
   
   echo "<div id='InnerSquare'>";

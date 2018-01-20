@@ -86,6 +86,24 @@ function TagMovie(path, name="") {
   xmlhttp.send(param);     
 }
 
+function NameInitiate() {
+  
+  if(document.getElementById("MovieName").value != "" ) {
+    document.getElementById("SelectShowName").style.visibility="visible";
+    document.getElementById("SaveEnclose").style.visibility="visible";
+  } 
+  else document.getElementById("SelectShowName").style.visibility="hidden";
+}
+
+function YearInitiate() {
+  if(document.getElementById("MovieYear").value != "" ) {
+    document.getElementById("SelectShowYear").style.visibility="visible";
+    document.getElementById("SaveEnclose").style.visibility="visible";
+  }
+  else document.getElementById("SelectShowYear").style.visibility="hidden";
+}
+
+
 
 function FindMovie() {
   var find_movie = document.getElementById("FindMovie").value;
@@ -101,36 +119,6 @@ function FindMovie() {
   xmlhttp.send(param);
 }
 
-function Go(num) {
-  var genre_list =[];// ["Horror", "Romance", "Action" ];//, "Fantasy", "Musical", "Mystery", "Scifi", "Thriller", "Western"];
-  var div = document.getElementsByClassName("GenrePics");
-  
-  var visible_name = document.getElementById("ShowGenre").value;
-  var length = div.length;
-
-  //populate the array with genre elements
-  for(i = 0; i < length; i++) {
-    genre_list[i] = div[i].name;
-  }
-  
-
-
-
-
-
-  // Finding the prev or next element
-  if(num == 1) {  
-    for(i = 0; i < genre_list.length; i++) {
-      if(visible_name == genre_list[i]) {
-        alert(visible_name);
-        document.getElementById(genre_list[i]).style.visibility = "hidden";
-        document.getElementById(genre_list[i+1]).style.visibility="visible";
-      } 
-    }
-  }
-   
-   
-}
 
 function Close() {
   location.href ="/Movies/php/Home.php";
@@ -183,9 +171,9 @@ function LanguageClick(name) {
   }
 }
 
-function ExecXMLForTagging(file_path, language_file_path, genre_file_path) {
+function ExecXMLForTagging(movie_name, movie_year, file_path, language_file_path, genre_file_path) {
   var xmlhttp = new XMLHttpRequest();
-  var param = "File_path="+file_path+"&Language="+language_file_path+"&Genre="+genre_file_path;
+  var param = "MovieName="+movie_name+"&MovieYear="+movie_year+"&File_path="+file_path+"&Language="+language_file_path+"&Genre="+genre_file_path;
   xmlhttp.open("POST", "/Movies/php/FileWrite.php", true);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
@@ -201,11 +189,19 @@ function SaveGenreLanguage(movie_path) {
   var removing_file_name = movie_path.split("/");
   var file_name = removing_file_name[removing_file_name.length - 1 ];   
   var file_path = movie_path.replace(file_name, "");
+
+  var movie_name = "";
+  var movie_year = "";
+
+  if(document.getElementById("FillUpInfo")) {
+    movie_name = document.getElementById("MovieName").value;
+    movie_year = document.getElementById('MovieYear').value;
+  }
+
   var genre_file_path = document.getElementById("Genre").value;
   var language_file_path = document.getElementById("Lang").value;
-  alert(genre_file_path+" "+language_file_path);
   /* Writing the Genre and Language to file_path mentioned */
-  ExecXMLForTagging(file_path, language_file_path, genre_file_path);
+  ExecXMLForTagging(movie_name, movie_year, file_path, language_file_path, genre_file_path);
   document.getElementById("save").value = "SAVED";
 }
 

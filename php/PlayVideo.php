@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <table>
 <tr>
 <td><img src="<?php echo $DEFAULT_LOCATION.'back.png'; ?>" width="100" height="100" onclick="Close()" /></td>
-<td width="100%"> <div class="MovieName"> <h1> <?php echo  $movie_name; ?></h1> </div> </td>
+<td width="100%"> <div class="MovieName"> <h1> <?php echo  strtoupper($movie_name) ; ?></h1> </div> </td>
 </tr>
 </table>
 </div>

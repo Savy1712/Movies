@@ -13,12 +13,18 @@ $movie_path = "";
 $movie_name = "";
 $language = "";
 $genre = "";
+$fill_up = false;
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_name = htmlspecialchars($_POST["movie_name"]);
   $movie_path = htmlspecialchars($_POST["movie_path"]);
   $language = htmlspecialchars($_POST["Language"]);
   $genre = htmlspecialchars($_POST["Genre"]);
+  if($movie_name == "") {
+    $movie_name = "TAG MOVIE";
+    $fill_up = True;
+  }
 }
 ?>	 
 
@@ -29,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class = "Enclose">
 <table>
 <tr>
-<td><input type="button" title="Play the movie" name="play_movie" value=""  class='PlayMovieIn' onclick="" style="background-image:url('<?php echo $DEFAULT_LOCATION.'play1.png'; ?>')"  /></td>
-<td width="100%"> <div id = "SideHeadings" title="Name of the Movie"><?php echo "$movie_name"; ?></div> </td>
+<td><input type="button" title="Play the movie" name="play_movie" value=""  class='PlayMovieIn' onclick="" style="background-image:url('<?php echo $DEFAULT_LOCATION.'play1.png'; ?>')"  /> </td>
+<td width="100%"> <div id = "SideHeadings" title="Name of the Movie"><?php echo strtoupper($movie_name); ?></div> </td>
 <td width="20%"><input type="button" name="close_movie" value="" class="Exit" onclick="Close()"  style="background-image:url('<?php echo $DEFAULT_LOCATION.'home1.png'; ?>')" title="Go To Home"></td>
 </tr>
 </table>
@@ -40,12 +46,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 <div id = "Innerrectangle">
+<?php 
+
+/* Absence of Info.text file makes to come into this compartment */
+if ($fill_up == True) { 
+?>
+  <table width='100%'>
+  <tr>
+  <td width="10%" id="TagBox"><b> MOVIE NAME </b> <img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowName"></img> </td>
+  <td width="60%"><div id="InnerRectTextBox"><input class="TextBox" type="text" id="MovieName" placeholder="Enter the name of movie here..." onkeypress="NameInitiate()">
+ <?php 
+   if($fill_up == True) {
+     $movie_list = explode("/", $movie_path); 
+     $title =  $movie_list[count($movie_list)-1];  
+ ?>
+  <img src= "<?php echo $DEFAULT_LOCATION. 'hint.png'; ?>" width="50px" height="50px" title="*HINT : Choose suitable name using '<?php echo $title ; ?>' " />
+
+<?php } ?>
+  </input>
+  </div></td>
+  </tr>
+  </table>
+
+
+  <table width='100%'>
+  <tr>
+  <td width="10%" id="TagBox"><b> MOVIE  YEAR </b>  <img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowYear"></img></td>
+  <td width="60%">
+  <div id="InnerRectTextBox">
+    <?php 
+      $old_year = 1950;
+      $current_year = date('Y');
+      echo "<select id='MovieYear' class='TextBox' onchange='YearInitiate()' onkeypress='YearInitiate()'>";
+      foreach(range($current_year, $old_year) as $i):
+        echo "<option> $i </option>"; 
+      endforeach;
+      echo "</select>";   
+    ?>
+  </div>
+  </td>
+  <input type="hidden" id="FillUpInfo" value="" />
+  </tr>
+  </table>
+
+<?php
+}
+?>
 
 <table width="100%">
 <tr class="InfoTable">
-<td id = "TagBox"> <b>GENRE</b><br>
+<td width="10%" id = "TagBox"> <b>GENRE</b><br>
 <img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowGenre"></img></td>
-
 </td>
 
 <td>
@@ -68,11 +119,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </td>
 </tr>
 <tr>
-<td id = "TagBox"><b> LANGUAGE </b><br>
-
+<td id = "TagBox" width="10%"><b> LANGUAGE </b><br>
 <img src= "<?php echo $DEFAULT_LOCATION.'like.png'; ?>" width="50px" height="50px" id="SelectShowLanguage" ></img></td>
-
-
 <td>
 
 <div id = "InnerRectBox">
