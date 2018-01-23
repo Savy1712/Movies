@@ -71,7 +71,7 @@ function TagMovie(path, name="") {
 
   /* Replace all the occurences -> /g/  */
   var movie_name = movie_name_with_amb.replace(/&/g, " ");
-   document.getElementById("rectangle").style.opacity="0.3";
+   document.getElementById("rectangle").style.opacity="0.001";
   
   /* Appending the language and genre details */
   var param = "movie_path="+movie_path+"&movie_name="+movie_name+"&Language="+language+"&Genre="+genre;
@@ -170,6 +170,35 @@ function LanguageClick(name) {
     }
   }
 }
+
+
+function UploadMovieFile() {
+
+
+
+
+}
+
+
+function UploadMovie() {
+
+  document.getElementById("rectangle").style.opacity="0.001";
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", "/Movies/php/UploadMovie.php", true);
+  xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {   
+      document.getElementById("UploadMovie").innerHTML = this.responseText;         
+    }
+  };
+
+  document.getElementById("UploadMovie").style.visibility="visible";
+  
+  xmlhttp.send();
+}
+
+
+
 
 function ExecXMLForTagging(movie_name, movie_year, file_path, language_file_path, genre_file_path) {
   var xmlhttp = new XMLHttpRequest();

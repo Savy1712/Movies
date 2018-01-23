@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class = "Enclose"> 
 <table>
 <tr>
-<td><img src="<?php echo $DEFAULT_LOCATION.'back.png'; ?>" width="100" height="100" onclick="Close()" /></td>
+<td><img src="<?php echo $DEFAULT_LOCATION.'back.png'; ?>" width="80" height="80" onclick="Close()" /></td>
 <td width="100%"> <div class="MovieName"> <h1> <?php echo  strtoupper($movie_name) ; ?></h1> </div> </td>
 </tr>
 </table>

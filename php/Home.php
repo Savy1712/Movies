@@ -3,6 +3,9 @@
 include "Paths.php";
 ?>
 
+<div id="UploadMovie" style="visibility:hidden"></div>
+
+
 <div id = "rectangle">
 <html lang="en">
 <head> 
@@ -11,13 +14,15 @@ include "Paths.php";
 
 
 <script  src="/Movies/js/Movie.js"> </script>
-</head>
 
 <div class="Enclose">
 <table>
+
+
+
 <tr>
 <td class="Symbol">
-<img src="<?php echo $DEFAULT_LOCATION.'movie.png'; ?>" width="70" height="50"  title="GO TO HOME" onclick="GoHome()" />
+<img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>" width="70" height="50"  title="GO TO HOME" onclick="GoHome()" />
 </td>
 <td class="MovieName"> 
 <div id = "SideHeadingsFront">MOVIES</div></td>
@@ -27,13 +32,22 @@ include "Paths.php";
 <td class="Find">
 <input type="button" value="FIND" class="FindBut" onclick="FindMovie()"/> 
 </td>
+<td class="UploadCol"><button class="Upload" style="background-image:url('<?php echo $DEFAULT_LOCATION.'upload.ico'; ?>')" id="Upload" onclick="UploadMovie();" title="Upload files"></button>
+</td>
+<td>
+<button class="Logout" style="background-image:url('<?php echo $DEFAULT_LOCATION.'exit.png'; ?>')" id="Logout" onclick="" title="Logout from this session"></button>
+</td>
 </tr></table>
 </div>
+
+</head>
+ 
 <!--
 <div id ="RightCornering"> 
 </div>
 
 -->
+
 
 <body>
 <div id = "Body">
@@ -152,25 +166,22 @@ if($DEBUG) {
 
 
 <?php
+
 $one_time = False;
 $search_count = 0;
 $movie_count = 0;
 $display = False;
 
 
+#Iterating through folders containing movies
 foreach ($folder_list as $folder):
-/*<div id = "TagBox"><h1> <?php echo explode("_", $folder)[1]; ?> </h1> </div> */
-
 ?>
 <div id ='InnerBox'> 
 <table class='MovieList'>
 <tr>
 
 <?php 
-
-
-
-
+#Iterating through movies inside particular folder
 foreach($movie_list as $movie):
   $file_path = $movie;
   $movie_full_name = ""; 
@@ -181,10 +192,8 @@ foreach($movie_list as $movie):
   endforeach;
   
   $subs_available = false;
-  
-  
 
-
+  #Checking for subtitle files
   if( glob($file_path."/*.srt") == true ) {
     $subs_available = true;
   }
@@ -195,6 +204,9 @@ foreach($movie_list as $movie):
   $language = "";
   $genre = "";
 
+  #Existence of Info.txt
+  #TODO: Changing this part to Database connection
+
   if(!file_exists($file_path."/Info.txt")) {
 
   } else {  
@@ -202,7 +214,6 @@ foreach($movie_list as $movie):
     $dir_list = explode(";", $dir);
     # Getting the Movie name 
     $file_name = explode("=", $dir_list[0])[1];
- 
  
   if($search_movie != "" ) {
     if (strpos(strtoupper($file_name), strtoupper($search_movie)) !== False) {
@@ -216,15 +227,12 @@ foreach($movie_list as $movie):
           echo "</tr></table>";
           echo "</div>";
           $one_time = True;
+          break;
         } else  { continue; }
      }
    } 
    
-
-
-
-  # Adding the Language and Genre headings
-  
+  # Adding the Language and Genre headings  
   if(count($dir_list) > 2) {
     if(count($dir_list) == 4) {
       if(explode("=", $dir_list[2])[0] == "Language") $language = explode("=", $dir_list[2])[1];
@@ -248,6 +256,7 @@ foreach($movie_list as $movie):
     break;  
   }
 
+
   # Genre specific search in Home page
   if($genre_post != "ALL") { 
     if($genre_post != "" ) {
@@ -255,8 +264,6 @@ foreach($movie_list as $movie):
       else if ($genre != $genre_post ) { $movie_count = $movie_count + 1; continue; }
     }
   }  
-  
-
   
   # Merging the movie_path with Language and Genre
   if($language != "") $movie_path = $movie_path."#?Language=".$language;
@@ -298,68 +305,59 @@ foreach($movie_list as $movie):
   } 
   
   if (strpos($movie, $folder) !== false) { 
-  echo "<td>";  
-  echo "<div id ='SquareBox'>";
-  echo "<div id ='Straightline'>";
-  echo "</div>";
-  echo "<div id ='InnerSquareHeading' wrap='soft'>";
-  echo "<center>".strtoupper($file_name)."</center>";
-  echo "</div>";
+    echo "<td>";  
+    echo "<div id ='SquareBox'>";
+    echo "<div id ='Straightline'>";
+    echo "</div>";
+    echo "<div id ='InnerSquareHeading' wrap='soft'>";
+    echo "<center>".strtoupper($file_name)."</center>";
+    echo "</div>";
   
-  echo "<div id='InnerSquare'>";
-  echo "<img src='$image_file_name' width='200' height='200'></img></div>";
-  if($play_movie == True and $tag_movie == False) {
-    echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
-    echo "<input type='button' name='change_tag' value='CHANGE TAG' class='PlayMovie' onclick=TagMovie('$movie_path') />";
-    if($subs_available) {
-      echo "<div class ='Subs' title='Subtitle is available'>SUBS</div>";
-    } 
-
- 
-    /*
-    echo "<table><tr>";
-    echo "<td><input type='label' name='genre_display' value='$genre' class='GenreDisplay' title='Genre' disabled /></td>";
-    echo "<td><input type='label' name='language_display' value='$language' class='LanguageDisplay' title='Language' disabled /></td>";
-  
-    echo "</tr>";
-    echo "</table>"; */
-  } else if($play_movie == False and $tag_movie == True) {
-      echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='TagMovie' onclick=TagMovie('$movie_path') />";
+    echo "<div id='InnerSquare'>";
+    echo "<img src='$image_file_name' width='200' height='200'></img></div>";
+    if($play_movie == True and $tag_movie == False) {
+      echo "<input type='button' name='play_movie' value='PLAY MOVIE' class='PlayMovie' onclick=MoviePlay('$movie_path') />";
+      echo "<input type='button' name='change_tag' value='CHANGE TAG' class='PlayMovie' onclick=TagMovie('$movie_path') />";
       if($subs_available) {
-        echo "<div class ='SubsTag' title='Subtitle is available' >SUBS</div>";
+        echo "<div class ='Subs' title='Subtitle is available'>SUBS</div>";
       } 
-    
-  }
   
-  echo "</div>";
-  echo "</td>";
+   
+      /*
+      echo "<table><tr>";
+      echo "<td><input type='label' name='genre_display' value='$genre' class='GenreDisplay' title='Genre' disabled /></td>";
+      echo "<td><input type='label' name='language_display' value='$language' class='LanguageDisplay' title='Language' disabled /></td>";
+  
+      echo "</tr>";
+      echo "</table>"; */
+    } else if($play_movie == False and $tag_movie == True) {
+        echo "<input type='button' name='tag_movie' value='TAG & PLAY' class='TagMovie' onclick=TagMovie('$movie_path') />";
+        if($subs_available) {
+          echo "<div class ='SubsTag' title='Subtitle is available' >SUBS</div>";
+        } 
+    }
+  
+    echo "</div>";
+    echo "</td>";
+    }
+  endforeach;
+
+  if($display == False ) {
+    echo "</tr>";
+    echo "</table>"; 
   }
-endforeach;
-?>
-
-
-
-<?php 
-
-if($display == False ) {
-  echo "</tr>";
-  echo "</table>";
-}
-?>
-</div>
+  ?>
+  </div>
 
 <?php
-endforeach;
+  endforeach;
 ?>
 
 </div>
-
 </body>
 </div>
 
 <div id='Tagging' style='display:none' scrollbars='yes' ></div>
-
-
 </html>
 
 
