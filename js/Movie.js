@@ -180,14 +180,14 @@ function LanguageClick(name) {
 function BrowseMovie() {
   var show = "show";
   var browse = "";
+  var upload_fail = "N";
   var movie_name = document.getElementById('UploadFileName').value;
   var year = document.getElementById('MovieYear').value;
   var genre = document.getElementById('MovieGenre').value;
   var language = document.getElementById('MovieLanguage').value;
   var file_path = document.getElementById('file').value;
-  alert(file_path);
   var xmlhttp = new XMLHttpRequest();
-  var param = "Movie_name="+movie_name+"&year="+year+"&genre="+genre+"&language="+language+"&moviepath="+file_path+"&show="+show+"&browse="+browse;
+  var param = "MovieName="+movie_name+"&year="+year+"&genre="+genre+"&language="+language+"&moviepath="+file_path+"&show="+show+"&browse="+browse+"&upload_fail="+upload_fail;
   xmlhttp.open("POST", "/Movies/php/UploadMovie.php", true);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
@@ -201,8 +201,29 @@ function BrowseMovie() {
 
 
 function UploadMovieFile() {
+  var xmlhttp= new XMLHttpRequest();
+  var show = "show";
+  var browse = "";
+  var upload_fail = "F";
+  var movie_name = document.getElementById('UploadFileName').value;
+  if(movie_name == "") {
+    /* Mandatory */
+    upload_fail = "T";
+  }
+  var year = document.getElementById('MovieYear').value;
+  var genre = document.getElementById('MovieGenre').value;
+  var language = document.getElementById('MovieLanguage').value;
+  var file_path = document.getElementById('FilePath').value;
+  var param = "MovieName="+movie_name+"&year="+year+"&genre="+genre+"&language="+language+"&moviepath="+file_path+"&show="+show+"&browse="+browse+"&upload_fail="+upload_fail;
+  xmlhttp.open("POST", "/Movies/php/UploadMovie.php", true);
+  xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {   
+      document.getElementById("Uploadrectangle").innerHTML = this.responseText;         
+    }
+  };
 
-
+  xmlhttp.send(param); 
 }
 
 

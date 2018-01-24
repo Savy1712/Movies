@@ -15,6 +15,7 @@ $movie_genre = "";
 $movie_language = "";
 $movie_path = "";
 $browse_but = "";
+$upload_fail = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_name = htmlspecialchars($_POST["MovieName"]);
@@ -24,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_path = htmlspecialchars($_POST["moviepath"]);
   $show = htmlspecialchars($_POST["show"]);
   $browse_but = htmlspecialchars($_POST["browse"]);
+  $upload_fail = htmlspecialchars($_POST["upload_fail"]);
 }
 ?>	 
 
@@ -40,9 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <td width="50%"><div class="MoviePNG"><img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>"></div> </td>
 <td>
 <table class="UploadFileToServer">
-<tr>
-<td><input class="UploadBox" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" /></td>
-<td><img class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="0px" height="0px" /></td>
+<tr class="WhiteEnclose">
+<td><input class="<?php if($upload_fail == "T") { ?> ShortUploadBox <?php } else { ?> UploadBox <?php } ?> type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" />
+<?php if($upload_fail == "T") { ?>
+<img class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="20px" height="20px" />
+<?php } ?>
+</td>
 </tr>
 </table>
 
@@ -108,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </tr>
 <tr>
 <td>
-<input type="text" id="FilePath" class="UploadBox" value="<?php echo $movie_path; ?>" />
+<input type="text" id="FilePath" class="PathBox" value="<?php echo $movie_path; ?>" />
 </td>
 </tr>
 </table>
