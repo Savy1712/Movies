@@ -7,32 +7,12 @@ include "Paths.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link type="text/css" rel="stylesheet" href="/Movies/css/style.css">
 
-<?php 
-$movie_name = "";
-$movie_year = "";
-$show = "";
-$movie_genre = "";
-$movie_language = "";
-$movie_path = "";
-$browse_but = "";
-$upload_fail = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $movie_name = htmlspecialchars($_POST["MovieName"]);
-  $movie_year = htmlspecialchars($_POST["year"]);
-  $movie_genre = htmlspecialchars($_POST["genre"]);
-  $movie_language = htmlspecialchars($_POST["language"]);
-  $movie_path = htmlspecialchars($_POST["moviepath"]);
-  $show = htmlspecialchars($_POST["show"]);
-  $browse_but = htmlspecialchars($_POST["browse"]);
-  $upload_fail = htmlspecialchars($_POST["upload_fail"]);
-}
-?>	 
 
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
 <body>
+<form action="/Movies/php/FileUpload.php" method = "POST" enctype = "multipart/form-data" >
 <div id = "Uploadrectangle">
 <div class="Enclose">
 <div id="SideHeadings">NEW FILE UPLOAD</div>
@@ -43,10 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <td>
 <table class="UploadFileToServer">
 <tr class="WhiteEnclose">
-<td><input class="<?php if($upload_fail == "T") { ?> ShortUploadBox <?php } else { ?> UploadBox <?php } ?> type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" />
-<?php if($upload_fail == "T") { ?>
-<img class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="20px" height="20px" />
-<?php } ?>
+<td><input class="UploadBox" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" />
+<img id="errorimage" class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="0px" height="0px" opacity="0" />
 </td>
 </tr>
 </table>
@@ -100,13 +78,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <tr>
 <td>
-<input class="inputFile" type="file" id="file" name="fileID" onchange="BrowseMovie()" <?php if($browse_but == "Disabled") { ?> disabled <?php } ?> />
-<label for="file">BROWSE</label>
+<input class="inputFile" type="file" id="userfile" name="userfile" onchange="BrowseMovie()"  accept="video/*" <?php if($browse_but == "Disabled") { ?> disabled <?php } ?> />
+<label for="userfile">BROWSE</label>
 </td>
+<td> <div class="NameBox"> *Hint : Use only MP4, AVI, MKV </div></td>
 </tr>
 </table>
 
-<table class="<?php if($show == "") { ?>  UploadProcedure <?php } else { ?> UploadFileToServer <?php } ?>" >
+<table class="UploadFileToServer" id="UploadBlockShow" > 
 <tr>
 <td><div class= "NameBox"> FILE TO BE UPLOADED </div>
 </td>
@@ -118,25 +97,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </tr>
 </table>
 
-<table class="<?php if($show == "") { ?>  UploadProcedure <?php } else { ?> UploadFileToServer <?php } ?>" >
+
+
+<table class="UploadFileToServer"  id="UploadBlockShowBut" > 
 <tr>
 <td>
-
-
-
-<input type="button" title="Upload the file" name="FinalUpload" class="UploadBut" value="UPLOAD" onclick="UploadMovieFile()" id="FinalUpload" />
+<input type="submit" title="Upload the file" name="FinalUpload" class="UploadBut" value="UPLOAD" onclick="UploadMovieFile()" id="FinalUpload" />
 </td>
-
 </tr>
 </table>
 
-</td>
 
+
+</td>
 </tr>
 </table>
-
 </div>
-
 </div>
+</form>
 </body>
 </html>

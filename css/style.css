@@ -558,6 +558,7 @@ div.container{
 .WhiteEnclose {
 	background-color:white;
 	width:120%;
+	height:40px;
 	border:4px solid green;
 
 }
@@ -608,6 +609,8 @@ div.container{
 .MoviePNG {
 	background-color:green;
 	width:100%;
+	top:5%;
+	left:5%;
 }
 
 .Logout{
@@ -768,6 +771,15 @@ div.container{
 	visibility:visible;
 }
 
+#UploadBlockShow{
+	visibility:hidden;
+}
+
+#UploadBlockShowBut{
+	visibility:hidden;
+}
+
+
 .Line {
 	border-top:10px solid whitesmoke;	
 
@@ -795,11 +807,11 @@ div.container{
 
 
 .UploadBox {
-	width:100%;
+	width:90%;
 	margin:0% 0% 0px 0%;
 	border-radius:2px solid green;
 	font-size:15px;
-	height:40px;
+	height:30px;
 	border:none;
 }
 
@@ -882,8 +894,8 @@ div.container{
 
 
 .inputFile{
-	width: 0.1px;
-	height: 0.1px;
+	width: 100px;
+	height: 100px;
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;
@@ -920,7 +932,6 @@ div.container{
 
 .ErrorPNG {
 	visibility:visible;
-
 }
 
 #UploadMovie{
@@ -928,7 +939,7 @@ div.container{
 	text-align:center;
 	position:fixed;
 	width:80%;
-	top:10%;
+	top:5%;
 	left:5%;
 	z-index:1;
 	opacity:.99;
