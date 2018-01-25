@@ -11,8 +11,26 @@ include "Paths.php";
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $movie_name  = htmlspecialchars($_POST["MovieName"]);
+  $movie_year  = htmlspecialchars($_POST["MovieYear"]);
+  $movie_genre = htmlspecialchars($_POST["MovieGenre"]);
+  $movie_language = htmlspecialchars($_POST["MovieLanguage"]);
+  $movie_path = htmlspecialchars($_POST["MoviePath"]);
+  $movie_status = htmlspecialchars($_POST["UploadStatus"]);
+  $FileName = $_FILES['userfile']['name'];
+  $Tmp_name =  $_FILES['userfile']['tmp_name'];
+  //if(is_uploaded_file($Tmp_name)) { echo "uploaded properly"; }
+  /* if(move_uploaded_file($Tmp_name, $HOME_FOLDER."/Movies/Videos/".$FileName)) {
+    echo "moving done";
+  }  */
+}
+?>
+
+
 <body>
-<form action="/Movies/php/FileUpload.php" method = "POST" enctype = "multipart/form-data" >
+<form name = "Home" action="/Movies/php/Home.php" method = "POST" enctype = "multipart/form-data" >
 <div id = "Uploadrectangle">
 <div class="Enclose">
 <div id="SideHeadings">NEW FILE UPLOAD</div>
@@ -22,9 +40,22 @@ include "Paths.php";
 <td width="50%"><div class="MoviePNG"><img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>"></div> </td>
 <td>
 <table class="UploadFileToServer">
-<tr class="WhiteEnclose">
-<td><input class="UploadBox" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" />
+<tr class="WhiteEnclose"  >
+
+<!-- Checking for the size of upload file name box -->
+<td><input class="<?php if($movie_status == "F") { ?> UploadBox <?php } else { ?> ShortUploadBox <?php } ?>" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" 
+onkeyup="UploadFileNameChange()" />
+<?php 
+/* Checking for existence of file name */
+if($movie_status == "T") {
+?>
+<img id="errorimage" class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="30px" height="30px" opacity="0.99" />
+<?php } else {
+?>
 <img id="errorimage" class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="0px" height="0px" opacity="0" />
+<?php 
+}
+?>
 </td>
 </tr>
 </table>
@@ -78,36 +109,59 @@ include "Paths.php";
 
 <tr>
 <td>
-<input class="inputFile" type="file" id="userfile" name="userfile" onchange="BrowseMovie()"  accept="video/*" <?php if($browse_but == "Disabled") { ?> disabled <?php } ?> />
+<input class="inputFile" type="file" id="userfile" name="userfile" onchange="BrowseMovie()"  onkeypress="Deactivate()" accept="video/*" <?php if($movie_status == "F") { ?> disabled <?php } ?> form = "form1"/>
 <label for="userfile">BROWSE</label>
 </td>
 <td> <div class="NameBox"> *Hint : Use only MP4, AVI, MKV </div></td>
 </tr>
 </table>
 
-<table class="UploadFileToServer" id="UploadBlockShow" > 
+<table class="UploadFileToServer" > <!-- <?php if($movie_name != "" ) { ?> UploadFileToServer <?php } else { ?>  UploadProcedure <?php } ?>" > --> 
 <tr>
-<td><div class= "NameBox"> FILE TO BE UPLOADED </div>
+<td><div class= "NameBox"> FILE UPLOADING </div>
 </td>
 </tr>
+
 <tr>
 <td>
-<input type="text" id="FilePath" class="PathBox" value="<?php echo $movie_path; ?>" />
+<input type="text" id="FilePath" class="PathBox" value="<?php echo $movie_path; ?>" disabled />
 </td>
+</tr>
+
+<tr>
+<td><div class= "NameBox"> PROGRESS STATUS 
+<?php 
+  if($movie_status == "F") { 
+?>
+<img src="<?php echo $DEFAULT_LOCATION.'fblike.svg'; ?>"  width="30px" height="30px" ></img>
+<?php 
+} 
+?>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<div id = "FullBar">
+<div id = "IncreasingBar">
+</div>
+</div>
+</td>
+
 </tr>
 </table>
 
 
 
-<table class="UploadFileToServer"  id="UploadBlockShowBut" > 
+<table class="<?php if($movie_status == "F") { ?> UploadFileToServer    <?php } else { ?>  UploadProcedure <?php } ?>" >  
 <tr>
 <td>
-<input type="submit" title="Upload the file" name="FinalUpload" class="UploadBut" value="UPLOAD" onclick="UploadMovieFile()" id="FinalUpload" />
+<input type="submit"  name="FinalUpload" class="UploadBut" value="FINISH" onclick="UploadMovieFile()" id="FinalUpload" />
 </td>
 </tr>
 </table>
-
-
 
 </td>
 </tr>
