@@ -104,7 +104,6 @@ function YearInitiate() {
 }
 
 
-
 function FindMovie() {
   var find_movie = document.getElementById("FindMovie").value;
   var xmlhttp = new XMLHttpRequest();
@@ -172,18 +171,12 @@ function LanguageClick(name) {
 }
 
 
-
-function UploadFileNameChange() {
-  
-}
-
 function Deactivate() {
 	document.getElementById('userfile').disabled=true;
 }
-
-
-function BrowseMovie() {
-    var show = "show";
+																																																														
+function BrowseMovie(upload) {
+    var show = "";
     var browse = "";
     var upload_fail = "F";
     var movie_name = document.getElementById('UploadFileName').value;
@@ -192,37 +185,42 @@ function BrowseMovie() {
     var language = document.getElementById('MovieLanguage').value;
     var file_path = document.getElementById('userfile').value; 
     
-    document.getElementById('FilePath').value = file_path;
     /* File specification */
     var file = document.getElementById("userfile").files[0];
     var formdata = new FormData();
-    //var param = "MovieName="+movie_name+"&year="+year+"&genre="+genre+"&language="+language+"&moviepath="+file_path;
     
-    formdata.append("userfile", file);
     formdata.append("MovieName", movie_name); 
     formdata.append("MovieYear", movie_name); 
     formdata.append("MovieGenre", movie_name); 
     formdata.append("MovieLanguage", movie_name); 
     formdata.append("MoviePath", file_path); 
-     
+    formdata.append("Show", show); 
+    formdata.append("userfile", file);
 
     /* XMLHTTPrequest call */
     var ajax = new XMLHttpRequest();
 
     if(movie_name == "") {
       /* Mandatory */
-      upload_fail = "T";
-    } else {
-        ajax.upload.addEventListener("progress", progressHandler, false); 
-        ajax.addEventListener("load", completeHandler, false);
-        ajax.addEventListener("error", errorHandler, false);
-        ajax.addEventListener("abort", abortHandler, false);
+      document.getElementById('errorimage').style.width="30px";
+      document.getElementById('errorimage').style.height="30px";
+      document.getElementById('errorimage').style.opacity = "0.99"; 
+      return;
+    } 
+    
+    document.getElementById('FilePath').value = file_path;
+
+    if(upload == "0") {
+      ajax.upload.addEventListener("progress", progressHandler, false); 
+      ajax.addEventListener("load", completeHandler, false);
+      ajax.addEventListener("error", errorHandler, false);
+      ajax.addEventListener("abort", abortHandler, false);
     }
      
     formdata.append("UploadStatus", upload_fail);
-    ajax.upload.addEventListener("progress", progressHandler, false); 
     ajax.open("POST", "/Movies/php/UploadMovie.php", true); 
     ajax.onreadystatechange = function() {
+
       if (this.readyState == 4 && this.status == 200) {   
         document.getElementById("Uploadrectangle").innerHTML = this.responseText;         
       }
@@ -236,17 +234,35 @@ function progressHandler(event) {
   var elem = document.getElementById('IncreasingBar');  
   var width= Math.round(percent);
   elem.style.width = width + "%";
-  elem.innerHTML = width * 1 + "%..."
+  elem.innerHTML = width * 1 + "%...";
+  if(width == "100")  {  LoadingFunction(); }
+
+}
+
+
+function LoadingFunction() {
+  document.getElementById("FullBar").style.width="0px";
+  document.getElementById("FullBar").style.height="0px";
+  document.getElementById("IncreasingBar").innerHTML =""; 
+  document.getElementById("IncreasingBar").style.height ="0px"; 
+  document.getElementById("LoadingFunction").style.visibility = "visible";
+  document.getElementById("UploadingFunction").style.display="block";
 }
 
 
 
-
-
 function completeHandler(event) {
+  document.getElementById("UploadingFunction").style.display = "none";
+  document.getElementById("LoadingFunction").style.visibility="hidden";
+  document.getElementById("UploadingFunction").style.height="0px"; 
+  document.getElementById("UploadingFunction").style.width="0px"; 
+  document.getElementById("LoadingFunction").style.width="0px"; 
+  document.getElementById("LoadingFunction").style.height="0px"; 
+  document.getElementById("FullBar").style.width="100%";
+  document.getElementById("FullBar").style.height="100%";
   document.getElementById("IncreasingBar").style.width="100%";
-  document.getElementById("IncreasingBar").style.backgroundColor ="transparent";
-  document.getElementById("IncreasingBar").innerHTML = "Uploading Successful!!";
+  document.getElementById("IncreasingBar").style.backgroundColor ="red";
+  document.getElementById("IncreasingBar").innerHTML = "100%";
 }
 
 
@@ -258,14 +274,16 @@ function abortHandler(event) {
     document.getElementById("IncreasingBar").innerHTML  = "Upload Aborted";
 }
 
+
+
+
 function UploadMovieFile() {
-  var xmlhttp= new XMLHttpRequest();
+  /*var xmlhttp= new XMLHttpRequest();
   var show = "show";
   var browse = "";
   var upload_fail = "F";
   var movie_name = document.getElementById('UploadFileName').value;
   if(movie_name == "") {
-    /* Mandatory */
     upload_fail = "T";
   }
   var year = document.getElementById('MovieYear').value;
@@ -273,7 +291,7 @@ function UploadMovieFile() {
   var language = document.getElementById('MovieLanguage').value;
   var file_path = document.getElementById('FilePath').value;
   var param = "MovieName="+movie_name+"&year="+year+"&genre="+genre+"&language="+language+"&moviepath="+file_path+"&show="+show+"&browse="+browse+"&upload_fail="+upload_fail;
-  xmlhttp.open("POST", "/Movies/php/UploadMovie.php", true);
+  xmlhttp.open("POST", "/Movies/php/UploadMovie.php", false);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {   
@@ -281,7 +299,8 @@ function UploadMovieFile() {
     }
   };
 
-  xmlhttp.send(param); 
+  xmlhttp.send(param); */
+
 }
 
 

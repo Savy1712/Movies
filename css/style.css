@@ -38,6 +38,17 @@
 	background-color:white;
 }
 
+#LoadingFunction{
+	visibility:hidden;
+	background-size:100%;
+	background-color:green;
+	color:red;
+}
+
+#UploadingFunction{
+	display:none;
+}
+
 #Innerrectangle {
 	position:relative;
 	background-color:white;
@@ -829,7 +840,7 @@ div.container{
 	color:white;
 	font-size:15px;
 	background-color:green;
-	margin:10% 0px 0px 0%;
+	margin:5% 0px 0px 0%;
 	vertical-align:center;
 	text-align:left;
 }
@@ -943,7 +954,7 @@ div.container{
 	margin:20% 30% 0px 0%;
 	font-size:20px;
 	font-weight:bold;
-	border-radius:10px solid red;
+	border:1px solid red;
 }
 
 
@@ -958,6 +969,13 @@ div.container{
 
 
 }
+
+
+
+#errorimage {
+	visibility:visible;
+}
+
 
 .ErrorPNG {
 	visibility:visible;

@@ -11,6 +11,7 @@ include "Paths.php";
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
+
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_name  = htmlspecialchars($_POST["MovieName"]);
@@ -21,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $movie_status = htmlspecialchars($_POST["UploadStatus"]);
   $FileName = $_FILES['userfile']['name'];
   $Tmp_name =  $_FILES['userfile']['tmp_name'];
+  $show = htmlspecialchars($_POST["Show"]);
   //if(is_uploaded_file($Tmp_name)) { echo "uploaded properly"; }
   /* if(move_uploaded_file($Tmp_name, $HOME_FOLDER."/Movies/Videos/".$FileName)) {
     echo "moving done";
@@ -30,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <body>
-<form name = "Home" action="/Movies/php/Home.php" method = "POST" enctype = "multipart/form-data" >
+<form id = "formID" action="/Movies/php/Home.php" method = "POST" enctype = "multipart/form-data" >
 <div id = "Uploadrectangle">
 <div class="Enclose">
 <div id="SideHeadings">NEW FILE UPLOAD</div>
@@ -43,11 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <tr class="WhiteEnclose"  >
 
 <!-- Checking for the size of upload file name box -->
-<td><input class="<?php if($movie_status == "F") { ?> UploadBox <?php } else { ?> ShortUploadBox <?php } ?>" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>" 
-onkeyup="UploadFileNameChange()" />
+<td><input class="<?php if($movie_status == "F") { ?> UploadBox <?php } else { ?> ShortUploadBox <?php } ?>" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>"  />
 <?php 
 /* Checking for existence of file name */
-if($movie_status == "T") {
+if($show == "show") {
 ?>
 <img id="errorimage" class="ErrorPNG" src="<?php echo $DEFAULT_LOCATION.'error.png'; ?>" width="30px" height="30px" opacity="0.99" />
 <?php } else {
@@ -109,7 +110,7 @@ if($movie_status == "T") {
 
 <tr>
 <td>
-<input class="inputFile" type="file" id="userfile" name="userfile" onchange="BrowseMovie()"  onkeypress="Deactivate()" accept="video/*" <?php if($movie_status == "F") { ?> disabled <?php } ?> form = "form1"/>
+<input class="inputFile" type="file" id="userfile" name="userfile" onchange="BrowseMovie(0)"  onkeypress="Deactivate()" accept="video/*" <?php if($movie_status == "F") { ?> disabled <?php } ?> form = "form1"/>
 <label for="userfile">BROWSE</label>
 </td>
 <td> <div class="NameBox"> *Hint : Use only MP4, AVI, MKV </div></td>
@@ -127,7 +128,9 @@ if($movie_status == "T") {
 <input type="text" id="FilePath" class="PathBox" value="<?php echo $movie_path; ?>" disabled />
 </td>
 </tr>
+</table>
 
+<table class="UploadFileToServer">
 <tr>
 <td><div class= "NameBox"> PROGRESS STATUS 
 <?php 
@@ -142,23 +145,35 @@ if($movie_status == "T") {
 </tr>
 
 
-<tr>
+
+<tr width="100%">
 <td>
 <div id = "FullBar">
 <div id = "IncreasingBar">
 </div>
 </div>
 </td>
-
 </tr>
+</table>
+
+<table class="UploadFileToServer">
+<tr>
+<td>
+<img src="<?php echo $DEFAULT_LOCATION.'Loading.gif'; ?>" width="70px" height="70px" id="LoadingFunction" value="Uploading File" />
+</td>
+<td>
+<div class="NameBox" id="UploadingFunction"> UPLOAD IN PROGRESS.. </div>
+</td>
+</tr> 
 </table>
 
 
 
-<table class="<?php if($movie_status == "F") { ?> UploadFileToServer    <?php } else { ?>  UploadProcedure <?php } ?>" >  
+
+<table class="<?php if($movie_status == "F") { ?> UploadFileToServer <?php } else { ?>  UploadProcedure <?php } ?>" >  
 <tr>
 <td>
-<input type="submit"  name="FinalUpload" class="UploadBut" value="FINISH" onclick="UploadMovieFile()" id="FinalUpload" />
+<input type="submit"  name="FinalUpload" class="UploadBut" value="FINISH" id="FinalUpload" />
 </td>
 </tr>
 </table>
@@ -171,3 +186,5 @@ if($movie_status == "T") {
 </form>
 </body>
 </html>
+
+
