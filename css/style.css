@@ -577,6 +577,19 @@ div.container{
 	
 }
 
+#SideHeadingsError {
+	font-size:50px;
+	border-color:green;
+	border-style:3px solid green;
+	background-color:red;
+	color:white;
+	height:60px;
+	width:100%;
+	text-align:center;
+	
+}
+
+
 #SideHeadingsFront {
 	font-size:30px;
 	border-color:green;
@@ -603,6 +616,10 @@ div.container{
 
 }
 
+.RedEnclose {
+	background-color:red;
+	
+}
 
 
 .Move {
@@ -889,7 +906,7 @@ div.container{
 
 .UploadBut{
 	width:50%;
-	margin:5%;
+	margin:2%;
 	padding:12px 10px;
 	height:50px;
 	background-color:red;
@@ -992,6 +1009,23 @@ div.container{
 	opacity:.99;
 	background-color:white;
 	overflow:hidden;
+}
+
+
+#UploadFileCheck{
+	margin:auto;
+	text-align:center;
+	position:fixed;
+	width:50%;
+	height:70%;
+	top:20%;
+	left:30%;
+ 	right:30%;
+	z-index:2;
+	opacity:.99;
+	background-color:white;
+	overflow:hidden;
+	visibility:hidden;
 }
 
 #EnclosingPlayerInfo {

@@ -11,6 +11,7 @@ include "Paths.php";
 <script  src="/Movies/js/Movie.js"> </script>
 </head>
 
+<div id="UploadFileCheck"></div>
 
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,11 +36,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form id = "formID" action="/Movies/php/Home.php" method = "POST" enctype = "multipart/form-data" >
 <div id = "Uploadrectangle">
 <div class="Enclose">
-<div id="SideHeadings">NEW FILE UPLOAD</div>
-
 <table>
 <tr>
-<td width="50%"><div class="MoviePNG"><img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>"></div> </td>
+<td width="100%">
+<div id="SideHeadings">NEW FILE UPLOAD</div>
+</td>
+<td width="20%">
+<img src="<?php echo $DEFAULT_LOCATION.'home1.png'; ?>" class="Exit" width="50px" height="50px" onclick="Close()" title="GO TO HOME" />
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<td width="50%"><div class="MoviePNG"><img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>" onclick="Close()" title="GO TO HOME"></div> </td>
 <td>
 <table class="UploadFileToServer">
 <tr class="WhiteEnclose"  >

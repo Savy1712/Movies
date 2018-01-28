@@ -184,9 +184,44 @@ function BrowseMovie(upload) {
     var genre = document.getElementById('MovieGenre').value;
     var language = document.getElementById('MovieLanguage').value;
     var file_path = document.getElementById('userfile').value; 
-    
+    var file_type_error = "FILE TYPE SHOULD BE";
+    var file_size_error = "FILE SIZE SHOULD BE";   
+    var error_message_first = "";
+    var error_message_second = ""; 
     /* File specification */
     var file = document.getElementById("userfile").files[0];
+
+    /* File type check */
+    if(file.type != "video/x-msvideo" && file.type != "video/mp4" && file.type != "video/x-matroska") {
+      error_message_first = file_type_error;
+      error_message_second = "MP4 or AVI or MKV";   
+    } 
+
+    /* File size check */
+    if(file.size  <  0 || file.size > 5000000000 ) {
+      error_message_first = file_size_error;
+      error_message_second = "LESS THAN 5GB";
+    }
+   
+
+    if(error_message_first != "" && error_message_second != "") {
+      var param = "error_message_first="+error_message_first+"&error_message_second="+error_message_second;
+      document.getElementById("Uploadrectangle").style.opacity="0.0001";
+      var xmlhttp = new XMLHttpRequest();   
+      xmlhttp.open("POST", "/Movies/php/UploadFileCheck.php", true);
+      xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+      xmlhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {   
+          document.getElementById("UploadFileCheck").innerHTML = this.responseText;         
+        }
+      };
+      document.getElementById("UploadFileCheck").style.visibility="visible";
+      xmlhttp.send(param); 
+      return -1;
+    }
+    
+
+
     var formdata = new FormData();
     
     formdata.append("MovieName", movie_name); 
@@ -262,7 +297,7 @@ function completeHandler(event) {
   document.getElementById("FullBar").style.height="100%";
   document.getElementById("IncreasingBar").style.width="100%";
   document.getElementById("IncreasingBar").style.backgroundColor ="red";
-  document.getElementById("IncreasingBar").innerHTML = "100%";
+  document.getElementById("IncreasingBar").innerHTML = "UPLOAD COMPLETE";
 }
 
 
@@ -308,7 +343,7 @@ function UploadMovie() {
 
   document.getElementById("rectangle").style.opacity="0.001";
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("POST", "/Movies/php/UploadMovie.php", true);
+  xmlhttp.open("POST", "/Movies/php/UploadMovie.php", false);
   xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {   
