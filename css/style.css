@@ -28,6 +28,8 @@
 	text-align:center;
 	vertical-align:center;	
 	font-size:20px;
+	color:white;
+	font-weight:bold;
 }
 
 #ProgressBar {
@@ -607,6 +609,16 @@ div.container{
 
 }
 
+
+.SearchEnclose {
+	background-color:whitesmoke;
+	margin:0px 0px 0px 10%;
+	height:40px;
+	width:80%;
+
+
+}
+
 .WhiteEnclose {
 	background-color:white;
 	width:120%;
@@ -623,17 +635,16 @@ div.container{
 
 
 .Move {
-	margin:0px 0% 0px 10%;
-	height:33px;
-	width:86%;
-	border-radius:2px solid green;
+	width:100%;
+	height:30px;
+	border:none;
+	background-color:whitesmoke;
+	font-size:20px;
 }
 
 .Align {
-	width:40%;
-	height:50%;
-	margin-top:2%;
-	background-color:green;
+	width:50%;
+
 }
 
 #Body {
@@ -653,11 +664,20 @@ div.container{
 	width:40%;
 
 }
+
+.Upload:hover{
+	background-color:white;
+	color:green;
+	border:5px solid white;
+
+}
 .Upload{
-	border:10px solid green;
-	width:70px;
-	height:70px;
-	background-color:green;
+	border:5px solid red;
+	height:42px;
+	background-color:red;
+	color:white;
+	font-size:20px;
+	font-weight:bold;
 	background-size:100%;
 	
 }
@@ -679,15 +699,7 @@ div.container{
 }
 
 .FindBut {
-	border:2px solid red;
-	font-size:25px;
-	font-family:bold;
-	height:42px;
-	width:55%;
-	margin:auto;
-	color:white;
-	background-color:red;
-
+	width:100%;
 }
 
 .Find {

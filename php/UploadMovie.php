@@ -32,8 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
+
 <body>
-<form id = "formID" action="/Movies/php/Home.php" method = "POST" enctype = "multipart/form-data" >
+<form name="form1" id = "formID" action="/Movies/php/Home.php" method = "POST" enctype = "multipart/form-data" >
 <div id = "Uploadrectangle">
 <div class="Enclose">
 <table>
@@ -54,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <tr class="WhiteEnclose"  >
 
 <!-- Checking for the size of upload file name box -->
-<td><input class="<?php if($movie_status == "F") { ?> UploadBox <?php } else { ?> ShortUploadBox <?php } ?>" type="Text" id="UploadFileName" name="UploadFileName" placeholder="Movie Name" value="<?php echo $movie_name; ?>"  />
+<td><input class="<?php if($movie_status == "F") { ?> UploadBox <?php } else { ?> ShortUploadBox <?php } ?>" type="Text" id="UploadFileName" name="UploadFileName1" placeholder="Movie Name" value="<?php echo $movie_name; ?>" autofocus />
 <?php 
 /* Checking for existence of file name */
 if($show == "show") {
@@ -141,7 +142,7 @@ if($show == "show") {
 
 <table class="UploadFileToServer">
 <tr>
-<td><div class= "NameBox"> PROGRESS STATUS 
+<td><div class= "NameBox">STATUS 
 <?php 
   if($movie_status == "F") { 
 ?>

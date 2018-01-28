@@ -14,6 +14,18 @@ include "Paths.php";
 
 
 <script  src="/Movies/js/Movie.js"> </script>
+<script src="/Movies/js/jquery.js"></script>
+
+<?php
+$genre_post = "";
+$search_movie = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $genre_post = $_POST["genre"];
+  $search_movie = $_POST["search_movie"];
+}
+
+?>
+
 
 <div class="Enclose">
 <table>
@@ -25,14 +37,26 @@ include "Paths.php";
 <img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>" width="70" height="50"  title="GO TO HOME" onclick="GoHome()" />
 </td>
 <td class="MovieName"> 
-<div id = "SideHeadingsFront">MOVIES</div></td>
+<div id = "SideHeadingsFront">MOVIES</div>
+</td>
 <td class="Align">
-<input type="text" id="FindMovie"  placeholder="Search Movies by Name..." class="Move" width="100%" value="<?php echo $search_movie; ?>" />
+<table class="SearchEnclose">
+<tr>
+<td>
+<input type="text" id="FindMovie"  placeholder="Search Movies by Name..."  class="Move" value="<?php echo $search_movie; ?>" onkeypress="Handle(event)" />
 </td>
-<td class="Find">
-<input type="button" value="FIND" class="FindBut" onclick="FindMovie()"/> 
+<td>
+<div class="FindBut">
+<img src="<?php echo $DEFAULT_LOCATION.'search.png'; ?>" width="25px" height="25px" onclick="FindMovie();"/>
+</div>
 </td>
-<td class="UploadCol"><button class="Upload" style="background-image:url('<?php echo $DEFAULT_LOCATION.'upload.ico'; ?>')" id="Upload" onclick="UploadMovie();" title="Upload files"></button>
+</tr>
+</table>
+
+
+</td>
+
+<td class="UploadCol"><button class="Upload" id="Upload" onclick="UploadMovie();" title="Upload files">UPLOAD</button>
 </td>
 <td>
 <button class="Logout" style="background-image:url('<?php echo $DEFAULT_LOCATION.'exit.png'; ?>')" id="Logout" onclick="" title="Logout from this session"></button>
@@ -53,17 +77,7 @@ include "Paths.php";
 <div id = "Body">
 
 
-<?php 
-$genre_post = "";
-$search_movie = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $genre_post = $_POST["genre"];
-  $search_movie = $_POST["search_movie"];
-}
-
-
-
-    
+<?php     
 $i = 0;
 
 $folder_list = [];

@@ -103,6 +103,11 @@ function YearInitiate() {
   else document.getElementById("SelectShowYear").style.visibility="hidden";
 }
 
+function Handle(e) {
+  if(e.keyCode == 13) {
+    FindMovie();
+  }
+}
 
 function FindMovie() {
   var find_movie = document.getElementById("FindMovie").value;
@@ -296,7 +301,7 @@ function completeHandler(event) {
   document.getElementById("FullBar").style.width="100%";
   document.getElementById("FullBar").style.height="100%";
   document.getElementById("IncreasingBar").style.width="100%";
-  document.getElementById("IncreasingBar").style.backgroundColor ="red";
+  document.getElementById("IncreasingBar").style.backgroundColor ="green";
   document.getElementById("IncreasingBar").innerHTML = "UPLOAD COMPLETE";
 }
 
