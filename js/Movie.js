@@ -146,12 +146,12 @@ function GenreClick(name) {
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);    
     if(class_name[i].name == name) {
-        div.style.border="5px solid green";
-        document.getElementById('Genre').value = class_name[i].name;
+        //div.style.border="5px solid green";
+        //document.getElementById('Genre').value = class_name[i].name;
     } else {
-	div.style.width="100px";
-	div.style.height="100px";
-	div.style.border="1px solid whitesmoke";
+	//div.style.width="100px";
+	//div.style.height="100px";
+	//div.style.border="1px solid whitesmoke";
     }
   }
 }

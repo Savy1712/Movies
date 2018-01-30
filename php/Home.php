@@ -53,10 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </tr>
 </table>
 
-
 </td>
 
-<td class="UploadCol"><button class="Upload" id="Upload" onclick="UploadMovie();" title="Upload files">UPLOAD</button>
+<td class="UploadCol">
+<img src="<?php echo $DEFAULT_LOCATION.'upload.png'; ?>" width="60px" height="60px" id="Upload" class="Upload" onclick="UploadMovie()" title="Upload movie file" />
 </td>
 <td>
 <button class="Logout" style="background-image:url('<?php echo $DEFAULT_LOCATION.'exit.png'; ?>')" id="Logout" onclick="" title="Logout from this session"></button>
