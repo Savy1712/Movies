@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </table>
 <table>
 <tr>
-<td width="50%"><div class="MoviePNG"><img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>" onclick="Close()" title="GO TO HOME"></div> </td>
+<td width="50%"><div class="MoviePNGInside"><img src="<?php echo $DEFAULT_LOCATION.'Movies.png'; ?>" onclick="Close()" title="GO TO HOME"></div> </td>
 <td>
 <table class="UploadFileToServer">
 <tr class="WhiteEnclose"  >

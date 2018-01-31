@@ -141,35 +141,35 @@ function SayThanks() {
 
 function GenreClick(name) {
   document.getElementById("SaveEnclose").style.visibility="visible";
-  document.getElementById("SelectShowGenre").style.visibility= "visible";
+  //document.getElementById("SelectShowGenre").style.visibility= "visible";
   var class_name = document.getElementsByClassName('GenrePics');
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);    
     if(class_name[i].name == name) {
-        //div.style.border="5px solid green";
-        //document.getElementById('Genre').value = class_name[i].name;
+        div.style.border="5px solid red";
+        document.getElementById('Genre').value = class_name[i].name;
     } else {
-	//div.style.width="100px";
-	//div.style.height="100px";
-	//div.style.border="1px solid whitesmoke";
+	div.style.width="90px";
+	div.style.height="90px";
+	div.style.border="1px solid white";
     }
   }
 }
 
 function LanguageClick(name) {
   document.getElementById("SaveEnclose").style.visibility="visible";
-  document.getElementById("SelectShowLanguage").style.visibility= "visible";
+  //document.getElementById("SelectShowLanguage").style.visibility= "visible";
   var class_name = document.getElementsByClassName('Language');
   for(i=0; i < class_name.length;i++) {
     var div = document.getElementById(class_name[i].name);
     if(class_name[i].name == name) {
-        div.style.color="white";
         div.style.backgroundColor="red";
+	div.style.color="white";
         //TODO: increase the font size
         document.getElementById('Lang').value = class_name[i].name;
     } else {
-        div.style.color="white";
-	div.style.backgroundColor="green";
+        div.style.color="green";
+	div.style.backgroundColor="white";
         
     }
   }
@@ -387,7 +387,7 @@ function SaveGenreLanguage(movie_path) {
   var movie_year = "";
 
   if(document.getElementById("FillUpInfo")) {
-    movie_name = document.getElementById("MovieName").value;
+    movie_name = document.getElementById('MovieName').value;
     movie_year = document.getElementById('MovieYear').value;
   }
 

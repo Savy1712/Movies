@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </table>
 </div>
 
-<input type="hidden" id="FillUpInfo" value="" />
   
 
 
@@ -60,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <tr>
 
 <td class="MoviePNG">
-<img src="<?php echo $image_file; ?>" onclick="Close()"  title="GO TO HOME" class="MoviePNG_Tag">
+<img src="<?php echo $image_file; ?>" onclick="Close()"  title="GO TO HOME" class="<?php if($movie_name == "TAG MOVIE") { ?> MoviePNG_Tag <?php } else { ?> MoviePNG_Small <?php } ?>" />
 </td>
 
 <td width="100%">
@@ -76,7 +75,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
 /* Absence of Info.text file makes to come into this compartment */
 if ($fill_up == True) { 
+
 ?>
+<input type="hidden" id="FillUpInfo" value="" />
+
 <!-- Name Row -->
   <tr>
     <td class="TitleBox">MOVIE NAME
@@ -84,17 +86,17 @@ if ($fill_up == True) {
     </td> 
   
     <td class="InnerRectTextBox">
-      <input class="TextBox" type="text" id="MovieName" placeholder="Enter the name of movie here..." onkeyup="NameInitiate()" />
-  
+      <input class="TextBox" type="text" id="MovieName" placeholder="Enter the name of movie here..."  onkeyup="NameInitiate()" />
+    </td> 
       <?php 
         if($fill_up == True) {
           $movie_list = explode("/", $movie_path); 
           $title =  $movie_list[count($movie_list)-1];  
       ?> 
   
-       <img src= "<?php echo $DEFAULT_LOCATION. 'hint.png'; ?>" width="30px" height="30px" title="*HINT : Choose suitable name using '<?php echo $title ; ?>' " />
 
     <?php } ?>
+    <td><img src= "<?php echo $DEFAULT_LOCATION. 'hint.png'; ?>" width="20px" height="20px" title="*HINT : Choose suitable name using '<?php echo $title ; ?>' " />
     </td>
   </tr>
 
@@ -128,10 +130,11 @@ if ($fill_up == True) {
 
   <!-- Genre Row -->
   <tr>
-    <td class = "TitleBox"><div class="NameBoxTag">GENRE</div>
+    <td class = "TitleBox"><div class="NameBoxTag">GENRE </div>
       <img src= "<?php echo $DEFAULT_LOCATION.'fblike.svg'; ?>" width="15px" height="15px" id="SelectShowGenre"></img></td>
     </td>
-  </tr>
+     
+    </tr>
 
   <tr>
     <td class="InnerRectTextBox">
@@ -158,7 +161,6 @@ if ($fill_up == True) {
 
   <tr>  
     <td class="TitleBox"><div class="NameBoxTag">LANGUAGE</div>
-      <img src= "<?php echo $DEFAULT_LOCATION.'fblike.svg'; ?>" width="15px" height="15px" id="SelectShowLanguage" ></img>
     </td>
   </tr>
   
@@ -182,11 +184,11 @@ if ($fill_up == True) {
 </tr>
 </table>
 
-
+<div id="Whiteline"></div>
 <table id = "SaveEnclose" >
   <tr>
     <td>
-      <img src= "<?php echo $DEFAULT_LOCATION.'save.ico'; ?>" class="ImgSave" ></img>
+      <img src= "<?php echo $DEFAULT_LOCATION.'save.png'; ?>" class="ImgSave" ></img>
     </td>
 
     <td>

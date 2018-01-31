@@ -75,8 +75,14 @@ div.container{
 	background-color:whitesmoke;	
 }
 
+
+
 #Straightline{
 	border:10px solid green;
+}
+
+#Whiteline{
+	border-bottom:3px solid whitesmoke;
 }
 
 
@@ -288,8 +294,8 @@ div.container{
 }
 
 .GenrePics{
-	width:80px;
-	height:80px;
+	width:90px;
+	height:90px;
 	background-size:100% 100% ;
 	overflow:auto;
 	border:1px solid whitesmoke;
@@ -297,9 +303,10 @@ div.container{
 
 
 .Language{
-	width:80px;
-	height:80px;
+	width:100%;
+	height:100px;
 	font-size:15px;
+	font-weight:bold;
 	color:green;
 	background-color:whitesmoke;
 }
@@ -308,36 +315,50 @@ div.container{
 	background-color:green;
 	width:50%;
 	height:630px;
-	
 }
+
+.MoviePNGInside {
+	background-color:green;
+	width:100%;
+	left:10%;
+	height:100%;
+}
+
+
 
 .GenreControlBox {
 	width:100%;
-	height:200px;
+	height:100%;
 	overflow:auto;
 
 }
 .TableTagFile {
 	margin:0% 0px 0px 0px;
 	width:100%;
-	height:20%;
+	height:100%;
 	overflow:auto;
 }
 
+
 .InnerRectTextBox{
 	width:100%;
-	height:20px;
+	height:100%;
 }
 
 #Innerrectangle {
 	background-color:green;
-	height:630px;
+	height:100%;
 	overflow-y:scroll;
 }
 
 .MoviePNG_Tag{
 	width:100%;
-	height:610px;
+	height:100%;
+}
+
+.MoviePNG_Small{
+	width:100%;
+	height:70%;
 }
 
 
@@ -347,22 +368,24 @@ div.container{
 	text-align:center;
 	background-color:whitesmoke;
 	height:40px;
-	width:100%;
+	width:95%;
+	margin:0% 0px 0px 3%;
+
 }
 
 .TitleBox{
 	width:20%;
-	height:20px;
+	height:80px;
 	color:white;
 	font-size:15px;
 	font-weight:bold;
 	vertical-align:center;
-	border:4px solid red;
+	text-align:left;
 }
 
 .GenreTable{
-	width:200px;
-	height:200px;
+	width:100%;
+	height:150px;
 	overflow:auto;
 }
 
@@ -413,9 +436,9 @@ div.container{
 
 
 #SaveEnclose {
-	margin:5% 40% 2% 40%;
+	margin:2% 40% 2% 40%;
 	background-color:green;
-	border:4px solid green;
+	border:10px solid red;
 	width:200px;
 	height:50px;
 	visibility:hidden;
@@ -434,9 +457,9 @@ div.container{
 	height:50px;
 	font-weight:bold;
 	border:10px solid green;
-	background-color:green;
 	color:white;
 	font-size:30px;
+	background-color:green
 }
 
 
@@ -631,6 +654,7 @@ div.container{
 
 .Enclose {
 	background-color:green;
+	overflow:auto;
 
 }
 
@@ -837,13 +861,13 @@ div.container{
 	margin:auto;
 	text-align:center;
 	position:fixed;
-	width:80%;
+	width:90%;
 	top:1%;
 	left:3%;
 	z-index:1;
 	opacity:.99;
 	border:10px solid green;
-	background-color:white;
+	background-color:green;
 	overflow:hidden;
 }
 
@@ -892,13 +916,14 @@ div.container{
 
 .NameBoxTag {
 	width:100%;
-	height:20px;
+	height:35px;
 	text-align:center;
 	font-weight:bold;
-	font-size:10px;
-	color:white;
+	font-size:20px;
+	color:green;
 	margin:0% 0px 0px 0px;
 	vertical-align:center;
+	background-color:white;
 }
 
 
